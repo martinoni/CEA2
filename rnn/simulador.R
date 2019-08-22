@@ -16,8 +16,8 @@ colnames(jogo1ime) <- c("EA1x","EA1y","EA2x","EA2y",
                         "bolax","bolay")
 
 
-jogo1ime[,seq(1,95,2)] <- jogo1ime[,seq(1,95,2)]*105
-jogo1ime[,seq(2,95,2)] <- jogo1ime[,seq(2,95,2)]*68
+# jogo1ime[,seq(1,95,2)] <- jogo1ime[,seq(1,95,2)]*105
+# jogo1ime[,seq(2,95,2)] <- jogo1ime[,seq(2,95,2)]*68
 
 attach(jogo1ime)
 
@@ -72,5 +72,5 @@ ptime <- system.time({
   }})
 ptime
 
-system('ffmpeg -framerate 15 -i ~/Development/IME/cea2/rnn/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/rnn/simulação_deep5.mp4 -y')
+system('ffmpeg -framerate 6 -i ~/Development/IME/cea2/rnn/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/rnn/simulação_todos_jogos2.mp4 -y')
 
