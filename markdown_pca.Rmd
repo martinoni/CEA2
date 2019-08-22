@@ -1,0 +1,126 @@
+---
+title: "Rolê"
+runtime: shiny
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r global, include=FALSE}
+#Componentes principais?
+library(magrittr)
+library(shiny)
+
+jogo1ime <- read.delim("~/Documentos/jogo1ime.txt", header=TRUE)
+attach(jogo1ime)
+
+jogadores = jogo1ime[, 7:50]
+
+#completamento das caselas NA (rodar varias vezes kkk):
+for(i in 1:length(jogadores[is.na(jogadores)])){
+  m = which(is.na(jogadores))[i]
+  n = m%%nrow(jogadores)
+  m = 1 + m%/%nrow(jogadores)
+  
+  print(sprintf('[%s, %s]:', n, m))
+  print(i)
+  if(!is.na(m) && !is.na(n)) jogadores[n, m] <- jogadores[n-1, m]
+}
+
+jogadores[is.na(jogadores)] <- 0
+pca <- princomp(jogadores)
+
+loadings <- pca$loadings
+
+start = jogadores[1, ]
+
+  indices_times <- c(rep('1',11), rep('2', 11))
+  
+  legenda_jogador <- function(xs, ys){
+    for(jogador in 1:22){
+      legend(xs[jogador]-3.6, ys[jogador]+3.9, jogador,
+             bty = 'n')
+    }
+  }
+  
+library(png)
+ima <- readPNG('~/Development/IME/cea2/campo/background_campo.png')
+  
+campca = start
+  
+  
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+Waiting time between eruptions and the duration of the eruption for the
+Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+
+```{r echo=FALSE}
+# selectInput("n_breaks", label = "Number of bins:",
+# choices = c(10, 20, 35, 50), selected = 20)
+
+shinyUI(
+  fluidRow(
+    column(2, sliderInput("pca1", label = "PCA 1:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca2", label = "PCA 2:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca3", label = "PCA 3:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca4", label = "PCA 4:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca5", label = "PCA 5:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca6", label = "PCA 6:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca7", label = "PCA 7:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca8", label = "PCA 8:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca9", label = "PCA 9:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca10", label = "PCA 10",
+                          min = -20, max = 20, value = 0, step = 0.2))
+  )
+)
+```
+
+### Componentes principais dos jogos:
+
+```{r echo=FALSE}
+output$unsized <- renderPlot({
+  campca = campca + input$pca1*loadings[, 1] +
+    input$pca2*loadings[, 2] +
+    input$pca3*loadings[, 3] +
+    input$pca4*loadings[, 4] +
+    input$pca5*loadings[, 5] +
+    
+    input$pca6*loadings[, 6] +
+    input$pca7*loadings[, 7] +
+    input$pca8*loadings[, 8] +
+    input$pca9*loadings[, 9] +
+    input$pca10*loadings[, 10]
+  
+  
+  xs <- campca[seq(1, 44, 2)] %>% as.numeric()
+  ys <- campca[seq(2, 44, 2)] %>% as.numeric()
+  
+  col <- rep(c('red', 'black'), each=11)
+  
+  plot.new()
+  lim <- par()
+  rasterImage(ima, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
+  par(new=TRUE)
+  plot(ys~xs,
+       xlim = c(0, 105), ylim = c(0, 68),
+       pch = c(rep(c(15, 17), each=11), 16),
+       col = col, main = sprintf('Tempo: fodase segundos'))
+  legenda_jogador(xs, ys)
+})
+
+renderUI(
+  plotOutput('unsized', width = '525px', height = '340px')
+)
+```
