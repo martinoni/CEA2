@@ -51,11 +51,10 @@ campca = start
   
 ```
 
-Column {.sidebar}
+Desliza essas poha {.sidebar}
 -----------------------------------------------------------------------
 
-Waiting time between eruptions and the duration of the eruption for the
-Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+olha que bacana
 
 ```{r echo=FALSE}
 # selectInput("n_breaks", label = "Number of bins:",
