@@ -8,7 +8,7 @@ library(rgl)
 library(Cairo)
 library(stringr)
 library(magrittr)
-jogo1ime <- read.delim("~/Documentos/jogo1ime.txt", header=TRUE)
+jogo1ime <- read.delim("./Development/IME/cea2/jogo1ime.txt", header=TRUE)
 # jogo1ime <- read.delim("~/Documentos/jogo1ime_completo.txt", header=TRUE)
 
 ui <- fluidPage(
