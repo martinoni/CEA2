@@ -3,16 +3,23 @@ library(adehabitatHR)
 library(scales)
 library(png)
 library(foreach)
-jogo1ime <- read.delim("C:/Users/lucas/Downloads/jogo1ime.txt", header=TRUE)
+library(doParallel)
+
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE)
 jogo1ime <- na.omit(jogo1ime)
 
-setwd('C:/Users/lucas/Downloads/R descr/2019-2/Cea2/imagens')
-ima <- readPNG('background_campo.png')
+setwd('~/Development/IME/cea2/campo/')
+ima <- readPNG('campo2.png')
+
+cl <- makeCluster(6)
+registerDoParallel(cl)
 
 
-for(i in 1:nrow(jogo1ime)){
+foreach(i = 1:nrow(jogo1ime), .packages = c('magrittr', 'sp', 
+                                            'adehabitatHR',
+                                            'scales')) %dopar% {
   jogosub <- jogo1ime[i,]
-  jogoimp <- jogosub[,7:50]
+  jogoimp <- jogosub[,8:53]
   jogoimp <- data.frame(jogosub$noacao,jogoimp)
   colnames(jogoimp)[1] <- "noacao"
   
@@ -21,12 +28,12 @@ for(i in 1:nrow(jogo1ime)){
   pos.x <- c()
   pos.y <- c()
   
-  for(j in 1:11){
+  for(j in 2:11){
     noacao <- c(noacao,paste0(jogoimp$noacao,"A"))
     pos.x <- c(pos.x,jogoimp[1,2*j])
     pos.y <- c(pos.y,jogoimp[1,(2*j)+1])
   }
-  for(j in 12:22){
+  for(j in 13:22){
     noacao <- c(noacao,paste0(jogoimp$noacao,"B"))
     pos.x <- c(pos.x,jogoimp[1,2*j])
     pos.y <- c(pos.y,jogoimp[1,(2*j)+1])
@@ -39,16 +46,16 @@ for(i in 1:nrow(jogo1ime)){
   jogo.mcp <- mcp(jogoimp.coor, percent = 100)
   
   if(jogosub$posse == 'EA'){
-    col = c(rep(c('red', 'black'), each=11))
-    col2 = c('red', 'black')
+    col = c(rep(c('red', 'midnightblue'), each=11), 'black')
+    col2 = c('red', 'midnightblue')
   } else{
-    col = c(rep(c('black', 'red'), each=11))
-    col2 = c('black', 'red')
+    col = c(rep(c('red4', 'blue'), each=11), 'black')
+    col2 = c('red4', 'blue')
   }
-  xs <- as.numeric(jogosub[,seq(7, 50, 2)])
-  ys <- as.numeric(jogosub[,seq(8, 50, 2)])
+  xs <- as.numeric(jogosub[,seq(8, 53, 2)])
+  ys <- as.numeric(jogosub[,seq(9, 53, 2)])
   
-  png(sprintf('campo_%06d.png', jogosub$noacao), width = 630, height = 408)
+  png(sprintf('./imagens/campo_%06d.png', i), width = 630, height = 408)
   plot.new()
   lim <- par()
   rasterImage(ima, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
@@ -60,5 +67,6 @@ for(i in 1:nrow(jogo1ime)){
   plot(jogo.mcp, col = alpha(col2, 0.5), add = TRUE)
   dev.off()
 }
-setwd("~")
-?alpha
+
+system('ffmpeg -framerate 5 -i ~/Development/IME/cea2/campo/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/campo/campo_poligonos.mp4 -y')
+system('rm /home/thiago/Development/IME/cea2/campo/imagens/*')
