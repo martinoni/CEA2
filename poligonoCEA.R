@@ -68,5 +68,9 @@ foreach(i = 1:nrow(jogo1ime), .packages = c('magrittr', 'sp',
   dev.off()
 }
 
+stopCluster(cl)
+
 system('ffmpeg -framerate 5 -i ~/Development/IME/cea2/campo/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/campo/campo_poligonos.mp4 -y')
 system('rm /home/thiago/Development/IME/cea2/campo/imagens/*')
+
+
