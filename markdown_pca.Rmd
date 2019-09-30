@@ -11,7 +11,7 @@ output:
 library(magrittr)
 library(shiny)
 
-jogo1ime <- read.delim("~/Documentos/jogo1ime.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo1ime.txt", header=TRUE)
 attach(jogo1ime)
 
 jogadores = jogo1ime[, 7:50]
@@ -51,10 +51,10 @@ campca = start
   
 ```
 
-Desliza essas poha {.sidebar}
+Deslize as barras {.sidebar}
 -----------------------------------------------------------------------
 
-olha que bacana
+Interpretação das 10 primeiras componentes principais
 
 ```{r echo=FALSE}
 # selectInput("n_breaks", label = "Number of bins:",
@@ -115,7 +115,7 @@ output$unsized <- renderPlot({
   plot(ys~xs,
        xlim = c(0, 105), ylim = c(0, 68),
        pch = c(rep(c(15, 17), each=11), 16),
-       col = col, main = sprintf('Tempo: fodase segundos'))
+       col = col, main = sprintf('Tempo: _ segundos'))
   legenda_jogador(xs, ys)
 })
 
