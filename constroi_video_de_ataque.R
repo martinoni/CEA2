@@ -1,7 +1,7 @@
 setwd('~/Development/IME/cea2/campo/')
 library(magrittr)
 
-jogo1ime <- read.delim("~/Development/IME/cea2/jogo2ime.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo5ime.txt", header=TRUE)
 attach(jogo1ime)
 posse_ataque <- sprintf('%s_%s', posse, ataque)
 jogo1ime = cbind(jogo1ime, posse_ataque)
@@ -64,7 +64,7 @@ constroi_video_de_ataque <- function(time_ataque, jogo1ime){
   
 }
 
-time_ataque <- 'EA_44'
+time_ataque <- 'EA_3'
 constroi_video_de_ataque(time_ataque, jogo1ime)
 system('ffmpeg -framerate 30 -i ~/Development/IME/cea2/campo/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/campo/EA_1.mp4 -y')
 system('rm /home/thiago/Development/IME/cea2/campo/imagens/*')

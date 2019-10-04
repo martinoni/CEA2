@@ -1,5 +1,5 @@
 library(dplyr)
-jogo1ime <- read.delim("C:/Users/lucas/Downloads/R descr/2019-2/Cea2/jogo1acao.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE)
 
 
 ataque.A <- subset(jogo1ime, posse == "EA",select = c("ataque","desf_ataque"))
