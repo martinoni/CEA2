@@ -95,6 +95,7 @@ plot(agrup2, xlab = "",ylab = "", hang = -1, cex = 0.6)
 clust <- cutree(agrup2,5)
 clust
 
+
 library(factoextra)
 library(NbClust)
 fviz_nbclust(sc.atq1A[,2:9], kmeans, method = "wss")+
