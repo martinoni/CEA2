@@ -1,9 +1,7 @@
 library(dplyr)
 jogo1ime <- read.delim("C:/Users/lucas/Downloads/R descr/2019-2/Cea2/jogo4acao.txt", header=TRUE)
-
 new_DF <- def1.A[rowSums(is.na(def1.A)) > 0,]
 wtf <- subset(jogo1ime, ataque ==66)
-
 golm1 <- subset(new_DF, desf_ataque == 1)
 
 ataque.A <- subset(jogo1ime, posse == "EA",select = c("ataque","desf_ataque"))
