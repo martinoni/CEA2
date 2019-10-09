@@ -72,5 +72,6 @@ ptime <- system.time({
   }})
 ptime
 
-system('ffmpeg -framerate 6 -i ~/Development/IME/cea2/rnn/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/rnn/simulação_todos_jogos2.mp4 -y')
+system('ffmpeg -framerate 6 -i ~/Development/IME/cea2/rnn/imagens/campo_%06d.png -c:v libx264 -profile:v high -crf 20 -pix_fmt yuv420p ~/Development/IME/cea2/rnn/simulacao_sigmoid.mp4 -y')
+system('rm /home/thiago/Development/IME/cea2/rnn/imagens/*')
 

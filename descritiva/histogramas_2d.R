@@ -1,5 +1,5 @@
 library("factoextra")
-jogo1ime <- read.delim("~/Documentos/jogo1ime.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE)
 jogo1ime.active <- jogo1ime[, 7:50]
 res.pca <- prcomp(jogo1ime.active, scale = TRUE)
 
@@ -15,15 +15,17 @@ r <- rf(32)
 library(ggplot2)
 attach(jogo1ime)
 library(png)
-for(i in seq(7, ncol(jogo1ime)-1, by = 2)){
+devAskNewPage(TRUE)
+for(i in seq(8, ncol(jogo1ime)-1, by = 2)){
   print(sprintf('Jogadores %s e %s', 
-          toString(colnames(jogo1ime)[i]), 
-          toString(colnames(jogo1ime)[i+1])))
+                toString(colnames(jogo1ime)[i]), 
+                toString(colnames(jogo1ime)[i+1])))
+  devAskNewPage(options("device.ask.default")[[1]])
   qplot(jogo1ime[, i], jogo1ime[, i+1],data=jogo1ime, geom='bin2d',
         xlim=c(0, 105), ylim=c(0, 68)) +
-    scale_fill_gradientn(colours=r, trans="log")
-  
-  readline(prompt="Press [enter] to continue")
+    scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
+    xlab('X') +
+    ylab('Y')  
 }
 
 h <- hexbin(df)
