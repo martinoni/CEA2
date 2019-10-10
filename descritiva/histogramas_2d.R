@@ -11,7 +11,7 @@ fviz_eig(res.pca)
 
 library(RColorBrewer)
 rf <- colorRampPalette(rev(brewer.pal(22,'Spectral')))
-r <- rf(32)
+r <- rf(11)
 library(ggplot2)
 attach(jogo1ime)
 library(png)
@@ -32,10 +32,10 @@ h <- hexbin(df)
 plot(h, colramp=rf)
 
 library(magrittr)
-jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo2acao.txt", header=TRUE)) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo3acao.txt", header=TRUE)) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo4acao.txt", header=TRUE))
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE) #%>% 
+  #rbind(read.delim("~/Development/IME/cea2/jogo2acao.txt", header=TRUE)) %>% 
+  #rbind(read.delim("~/Development/IME/cea2/jogo3acao.txt", header=TRUE)) %>% 
+  #rbind(read.delim("~/Development/IME/cea2/jogo4acao.txt", header=TRUE))
   
 x <- jogo1ime[, seq(8,51,2)] %>% 
   unlist()
@@ -44,7 +44,7 @@ y <- jogo1ime[, seq(9,51,2)] %>%
 
 qplot(x, y, geom='bin2d',
       xlim=c(0, 105), ylim=c(0, 68)) +
-  scale_fill_gradientn(colours=r, trans="probability", name = 'Frequência') +
+  scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
   xlab('X') +
   ylab('Y')  
 

@@ -1,43 +1,51 @@
-jogo1 <- jogo1ime
+library(magrittr)
+jogo1 <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo2acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo3acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo4acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo5acao.txt", header=TRUE))
+  
 
-lista <- c()
-for(i in 1:nrow(jogo1)){
-  if(jogo1$posse == 'EA'){
-    if(i != 1 && jogo1$ataque[i] != jogo1$ataque[i-1]){
-      tupla <- c(jogo1$ataque[i], jogo1$desf_ataque[i])
-      lista <- c(lista, tupla)
-      print(tupla)
-    }
-  }
-}
+ataques <- rbind(atq1.A, atq1.B, 
+                 atq2.A, atq2.B,
+                 atq3.A, atq3.B,
+                 atq4.A, atq4.B,
+                 atq5.A, atq5.B)
 
-lista <- c(c(1, jogo1$desf_ataque[1]), lista)
+defesas <- rbind(def1.A, def1.B, 
+                 def2.A, def2.B,
+                 def3.A, def3.B,
+                 def4.A, def4.B,
+                 def5.A, def5.B)
 
-lista <- matrix(lista, nrow=2)
-lista <- lista %>% t() %>% as.data.frame()
-lista <- lista %>% cbind(sc.atq1A)
-lista <- subset(lista, select = -c(V1, ataque))
-lista$V2 <- as.factor(lista$V2)
-par(mfrow=c(2,4))
-for(i in 2:9){
-  boxplot(lista[,i]~V2, data=lista,
-          main = colnames(lista)[i],
-          xlab = 'desfecho')
-}
 
-colnames(lista) <- c('Desfecho', colnames(lista)[2:length(colnames(lista))])
+ataques <- cbind(ataques, desfechos)
+defesas <- cbind(defesas, desfechos)
+
+
+colnames(ataques) <- c(colnames(ataques)[1:length(colnames(ataques))-1], 'Desfecho')
+colnames(ataques) <- c('Ações/minuto,
+                       ')
+ataques <- ataques[, 4:13]
+ataques <- ataques[, c(1:8, 10)]
+library(BBmisc)
+ataques$Desfecho <- as.factor(ataques$Desfecho)
+ataques <- normalize(ataques)
 library(reshape2)
-df.m <- melt(lista, id.var = "Desfecho")
+df.m <- melt(ataques, id.var = "Desfecho")
 require(ggplot2)
 ggplot(data = df.m, aes(x=variable, y=value)) + geom_boxplot(aes(fill=Desfecho)) +
   xlab('Variável') +
-  ylab('Valor padronizado')
+  ylab('Valor padronizado') +
+  ylim(c(-3, 3)) +
+  theme(axis.text.x=element_text(color = "black", size=11, angle=30, vjust=.8, hjust=0.8)) +
   
 
 
+
 variaveis <- 
-plot(1:71, lista$centAx, data = lista,
-     col = lista$V2)
+  plot(1:71, lista$centAx, data = lista,
+       col = lista$V2)
 for(i in 1:71){
   lines(i:(i+1), lista$centAx[i:(i+1)], data=lista,
         col = lista$V2[i])
