@@ -10,12 +10,12 @@ jogo1ime.active[is.na(jogo1ime.active)] <- 0
 fviz_eig(res.pca)
 
 library(RColorBrewer)
-rf <- colorRampPalette(rev(brewer.pal(11,'Spectral')))
+rf <- colorRampPalette(rev(brewer.pal(22,'Spectral')))
 r <- rf(32)
 library(ggplot2)
 attach(jogo1ime)
 library(png)
-devAskNewPage(TRUE)
+devAskNewPage(FALSE)
 for(i in seq(8, ncol(jogo1ime)-1, by = 2)){
   print(sprintf('Jogadores %s e %s', 
                 toString(colnames(jogo1ime)[i]), 
@@ -31,6 +31,22 @@ for(i in seq(8, ncol(jogo1ime)-1, by = 2)){
 h <- hexbin(df)
 plot(h, colramp=rf)
 
+library(magrittr)
+jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo2acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo3acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/jogo4acao.txt", header=TRUE))
+  
+x <- jogo1ime[, seq(8,51,2)] %>% 
+  unlist()
+y <- jogo1ime[, seq(9,51,2)] %>% 
+  unlist()
+
+qplot(x, y, geom='bin2d',
+      xlim=c(0, 105), ylim=c(0, 68)) +
+  scale_fill_gradientn(colours=r, trans="probability", name = 'Frequência') +
+  xlab('X') +
+  ylab('Y')  
 
 
 for(i in seq(7, ncol(jogo1ime)-1, by = 2)){
