@@ -14,6 +14,7 @@ rf <- colorRampPalette(rev(brewer.pal(22,'Spectral')))
 r <- rf(11)
 library(ggplot2)
 attach(jogo1ime)
+library(magrittr)
 library(png)
 devAskNewPage(FALSE)
 for(i in seq(8, ncol(jogo1ime)-1, by = 2)){
@@ -93,4 +94,3 @@ hist3D(z=z)
 #   readline(prompt="Press [enter] to continue")
 #   rgl.close()
 # }
-
