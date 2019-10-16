@@ -13,10 +13,4 @@ Relatório Final: https://onedrive.live.com/edit.aspx?resid=72090D081DA27007!168
 
 Boas práticas singerino: https://drive.google.com/file/d/15qrAIwU0nSH9GOovqMo1CKy4_oQRQ4R5/view?usp=sharing
 
-DST
-1	Sifilis
-2	Condiloma Acuminado
-3	Linfogranuloma
-4	AIDS
-5	Infeccao pelo HTLV
 Relatório Consulta Word: https://1drv.ms/w/s!AoZfnUdRLn6KiU3zpyxHYhso4fKG
