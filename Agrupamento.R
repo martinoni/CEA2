@@ -28,7 +28,7 @@ agrup1 <- hclust(d, method = "ward.D2")
 plot(agrup1, xlab = "",ylab = "", hang = -1, cex = 0.6,main = "Dendograma Atq Time A - Jogo 1 
      (sem pos bola)")
 
-clust <- cutree(agrup1,6)
+clust <- cutree(agrup1,3)
 clust
 
 
