@@ -119,8 +119,8 @@ agrup.def3B <- hclust(d.def3B, method = "ward.D2")
 
 #Ata B / Def A
 
-sc.atqB <- scale(atq1.B[,4:11])
-sc.atqB <- cbind(atq1.B$ataque,sc.atqB)
+sc.atqB <- scale(atq3.B[,4:11])
+sc.atqB <- cbind(atq3.B$ataque,sc.atqB)
 colnames(sc.atqB)[1] <- "ataque"
 sc.atqB <- as.data.frame(sc.atqB)
 d.atq3B = dist(sc.atqB[,2:9])
