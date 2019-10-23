@@ -36,7 +36,7 @@ cl_def3B <- cutree(agrup.def3B,4)
 cl_def4A <- cutree(agrup.def4A,3)
 cl_def4B <- cutree(agrup.def4B,4)
 cl_def5A <- cutree(agrup.def5A,4)
-cl_def5B <- cutree(agrup.def5B,6)
+cl_def5B <- cutree(agrup.def5B,5)
 
 ####SILHUETA
 library(cluster)
