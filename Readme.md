@@ -32,7 +32,7 @@ Grupos: Jogo 4 - Atq A - 5 (4) /
 Grupos: Jogo 5 - Atq A - 5 /
                  Atq B - 5 (6) /
                  Def A - 4 (6) /
-                 Def B - 6 /
+                 Def B - 5 /
 
 ## Consulta
 
