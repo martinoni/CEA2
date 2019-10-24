@@ -204,3 +204,87 @@ teste5A <- xtabs(~Atq+Def, compar5.A)
 compar5.B <- data.frame(atq5.B$ataque,as.factor(cl_atq5B),as.factor(cl_def5A))
 colnames(compar5.B) <- c("ataque","Atq","Def")
 teste5B <- xtabs(~Atq+Def, compar5.B)
+
+#Matriz de frequências Ataques vs Desfecho
+
+comparA1.A <- data.frame(atq1.A$ataque,as.factor(cl_atq1A),as.factor(atq1.A$desfecho))
+colnames(comparA1.A) <- c("ataque","Atq","Desfecho")
+testeA1A <- xtabs(~Atq+Desfecho, comparA1.A)
+
+comparA1.B <- data.frame(atq1.B$ataque,as.factor(cl_atq1B),as.factor(atq1.B$desfecho))
+colnames(comparA1.B) <- c("ataque","Atq","Desfecho")
+testeA1B <- xtabs(~Atq+Desfecho, comparA1.B)
+
+comparA2.A <- data.frame(atq2.A$ataque,as.factor(cl_atq2A),as.factor(atq2.A$desfecho))
+colnames(comparA2.A) <- c("ataque","Atq","Desfecho")
+testeA2A <- xtabs(~Atq+Desfecho, comparA2.A)
+
+comparA2.B <- data.frame(atq2.B$ataque,as.factor(cl_atq2B),as.factor(atq2.B$desfecho))
+colnames(comparA2.B) <- c("ataque","Atq","Desfecho")
+testeA2B <- xtabs(~Atq+Desfecho, comparA2.B)
+
+comparA3.A <- data.frame(atq3.A$ataque,as.factor(cl_atq3A),as.factor(atq3.A$desfecho))
+colnames(comparA3.A) <- c("ataque","Atq","Desfecho")
+testeA3A <- xtabs(~Atq+Desfecho, comparA3.A)
+
+comparA3.B <- data.frame(atq3.B$ataque,as.factor(cl_atq3B),as.factor(atq3.B$desfecho))
+colnames(comparA3.B) <- c("ataque","Atq","Desfecho")
+testeA3B <- xtabs(~Atq+Desfecho, comparA3.B)
+
+comparA4.A <- data.frame(atq4.A$ataque,as.factor(cl_atq4A),as.factor(atq4.A$desfecho))
+colnames(comparA4.A) <- c("ataque","Atq","Desfecho")
+testeA4A <- xtabs(~Atq+Desfecho, comparA4.A)
+
+comparA4.B <- data.frame(atq4.B$ataque,as.factor(cl_atq4B),as.factor(atq4.B$desfecho))
+colnames(comparA4.B) <- c("ataque","Atq","Desfecho")
+testeA4B <- xtabs(~Atq+Desfecho, comparA4.B)
+
+comparA5.A <- data.frame(atq5.A$ataque,as.factor(cl_atq5A),as.factor(atq5.A$desfecho))
+colnames(comparA5.A) <- c("ataque","Atq","Desfecho")
+testeA5A <- xtabs(~Atq+Desfecho, comparA5.A)
+
+comparA5.B <- data.frame(atq5.B$ataque,as.factor(cl_atq5B),as.factor(atq5.B$desfecho))
+colnames(comparA5.B) <- c("ataque","Atq","Desfecho")
+testeA5B <- xtabs(~Atq+Desfecho, comparA5.B)
+
+#Matriz de frequências Defesas vs Desfecho
+
+comparD1.A <- data.frame(def1.A$ataque,as.factor(cl_def1A),as.factor(def1.A$desfecho))
+colnames(comparD1.A) <- c("ataque","Def","Desfecho")
+testeD1A <- xtabs(~Def+Desfecho, comparD1.A)
+
+comparD1.B <- data.frame(def1.B$ataque,as.factor(cl_def1B),as.factor(def1.B$desfecho))
+colnames(comparD1.B) <- c("ataque","Def","Desfecho")
+testeD1B <- xtabs(~Def+Desfecho, comparD1.B)
+
+comparD2.A <- data.frame(def2.A$ataque,as.factor(cl_def2A),as.factor(def2.A$desfecho))
+colnames(comparD2.A) <- c("ataque","Def","Desfecho")
+testeD2A <- xtabs(~Def+Desfecho, comparD2.A)
+
+comparD2.B <- data.frame(def2.B$ataque,as.factor(cl_def2B),as.factor(def2.B$desfecho))
+colnames(comparD2.B) <- c("ataque","Def","Desfecho")
+testeD2B <- xtabs(~Def+Desfecho, comparD2.B)
+
+comparD3.A <- data.frame(def3.A$ataque,as.factor(cl_def3A),as.factor(def3.A$desfecho))
+colnames(comparD3.A) <- c("ataque","Def","Desfecho")
+testeD3A <- xtabs(~Def+Desfecho, comparD3.A)
+
+comparD3.B <- data.frame(def3.B$ataque,as.factor(cl_def3B),as.factor(def3.B$desfecho))
+colnames(comparD3.B) <- c("ataque","Def","Desfecho")
+testeD3B <- xtabs(~Def+Desfecho, comparD3.B)
+
+comparD4.A <- data.frame(def4.A$ataque,as.factor(cl_def4A),as.factor(def4.A$desfecho))
+colnames(comparD4.A) <- c("ataque","Def","Desfecho")
+testeD4A <- xtabs(~Def+Desfecho, comparD4.A)
+
+comparD4.B <- data.frame(def4.B$ataque,as.factor(cl_def4B),as.factor(def4.B$desfecho))
+colnames(comparD4.B) <- c("ataque","Def","Desfecho")
+testeD4B <- xtabs(~Def+Desfecho, comparD4.B)
+
+comparD5.A <- data.frame(def5.A$ataque,as.factor(cl_def5A),as.factor(def5.A$desfecho))
+colnames(comparD5.A) <- c("ataque","Def","Desfecho")
+testeD5A <- xtabs(~Def+Desfecho, comparD5.A)
+
+comparD5.B <- data.frame(def5.B$ataque,as.factor(cl_def5B),as.factor(def5.B$desfecho))
+colnames(comparD5.B) <- c("ataque","Def","Desfecho")
+testeD5B <- xtabs(~Def+Desfecho, comparD5.B)
