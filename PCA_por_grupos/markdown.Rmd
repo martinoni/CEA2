@@ -1,0 +1,87 @@
+---
+title: "Rolê"
+runtime: shiny
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r global, include=FALSE}
+library(magrittr)
+
+#Tratamento do jogo:
+load('~/Development/IME/cea2/CEA2/PCA_por_grupos/pcas_ataquesA_defesasB.RData')
+load('~/Development/IME/cea2/CEA2/PCA_por_grupos/dados_em_questao.RData')
+
+jogadores <- dados_em_questao_nao_normalizados[,3:46]
+start = jogadores[1, ]
+
+indices_times <- c(rep('1',11), rep('2', 11))
+  
+legenda_jogador <- function(xs, ys){
+    for(jogador in 1:22){
+      legend(xs[jogador]-3.6, ys[jogador]+3.9, jogador,
+             bty = 'n')
+    }
+  }
+  
+library(png)
+ima <- readPNG('~/Development/IME/cea2/CEA2/campo/background_campo.png')
+  
+campca = start
+```
+
+Deslize as barras {.sidebar}
+-----------------------------------------------------------------------
+
+Interpretação das 10 primeiras componentes principais
+
+```{r echo=FALSE}
+# selectInput("n_breaks", label = "Number of bins:",
+# choices = c(10, 20, 35, 50), selected = 20)
+
+shinyUI(
+  fluidRow(
+    column(2, sliderInput("pca1", label = "PCA 1:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca2", label = "PCA 2:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca3", label = "PCA 3:",
+                          min = -20, max = 20, value = 0, step = 0.2)),
+    column(2, sliderInput("pca4", label = "PCA 4:",
+                          min = -20, max = 20, value = 0, step = 0.2))
+  )
+)
+```
+
+### Componentes principais dos jogos:
+
+```{r echo=FALSE}
+output$unsized <- renderPlot({
+  k = 3
+  campca = campca + input$pca1*loadings[[k]][1:46, 1] +
+    input$pca2*loadings[[k]][1:46, 2] +
+    input$pca3*loadings[[k]][1:46, 3] +
+    input$pca4*loadings[[k]][1:46, 4]
+  
+  
+  xs <- campca[seq(1, 44, 2)] %>% as.numeric()
+  ys <- campca[seq(2, 44, 2)] %>% as.numeric()
+  
+  col <- rep(c('red', 'black'), each=11)
+  
+  plot.new()
+  lim <- par()
+  rasterImage(ima, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
+  par(new=TRUE)
+  plot(ys~xs,
+       xlim = c(0, 105), ylim = c(0, 68),
+       pch = c(rep(c(15, 17), each=11), 16),
+       col = col, main = sprintf('Para o grupo %s', k))
+  legenda_jogador(xs, ys)
+})
+
+renderUI(
+  plotOutput('unsized', width = '525px', height = '340px')
+)
+```
