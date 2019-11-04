@@ -1,9 +1,9 @@
 library(magrittr)
-jogo1 <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo2acao.txt", header=TRUE)) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo3acao.txt", header=TRUE)) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo4acao.txt", header=TRUE)) %>% 
-  rbind(read.delim("~/Development/IME/cea2/jogo5acao.txt", header=TRUE))
+jogo1 <- read.delim("~/Development/IME/cea2/CEA2/jogo1acao.txt", header=TRUE) %>% 
+  rbind(read.delim("~/Development/IME/cea2/CEA2/jogo2acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/CEA2/jogo3acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/CEA2/jogo4acao.txt", header=TRUE)) %>% 
+  rbind(read.delim("~/Development/IME/cea2/CEA2/jogo5acao.txt", header=TRUE))
   
 
 ataques <- rbind(atq1.A, atq1.B, 

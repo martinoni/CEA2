@@ -5,39 +5,41 @@ output:
   html_document:
     df_print: paged
 ---
-
+    
 ```{r global, include=FALSE}
 library(magrittr)
-library(shiny)
-library(rmarkdown)
+
 #Tratamento do jogo:
 load('~/Development/IME/cea2/CEA2/PCA_por_grupos/pcas_ataquesA_defesasB.RData')
 load('~/Development/IME/cea2/CEA2/PCA_por_grupos/dados_em_questao.RData')
-jogadores <- dados_em_questao_nao_normalizados[,3:46]
-start = jogadores[1, ]
-indices_times <- c(rep('1',11), rep('2', 11))
-  
+
+jogadores <- dados_em_questao_nao_normalizados[,3:24]
+start = jogadores[1,]
+
+indices_times <- c(rep('1',11))
+
 legenda_jogador <- function(xs, ys){
-    for(jogador in 1:22){
-      legend(xs[jogador]-3.6, ys[jogador]+3.9, jogador,
-             bty = 'n')
-    }
+  for(jogador in 1:11){
+    legend(xs[jogador]-3.6, ys[jogador]+3.9, jogador,
+           bty = 'n')
   }
-  
+}
+
 library(png)
 ima <- readPNG('~/Development/IME/cea2/CEA2/campo/background_campo.png')
-  
+
 campca = start
 ```
 
 Deslize as barras {.sidebar}
 -----------------------------------------------------------------------
-
-Interpretação das 10 primeiras componentes principais
+  
+  Interpretação das 10 primeiras componentes principais
 
 ```{r echo=FALSE}
 # selectInput("n_breaks", label = "Number of bins:",
 # choices = c(10, 20, 35, 50), selected = 20)
+
 shinyUI(
   fluidRow(
     column(2, sliderInput("pca1", label = "PCA 1:",
@@ -56,17 +58,17 @@ shinyUI(
 
 ```{r echo=FALSE}
 output$unsized <- renderPlot({
-  k = 3
-  campca = campca + input$pca1*loadings[[k]][1:46, 1] +
-    input$pca2*loadings[[k]][1:46, 2] +
-    input$pca3*loadings[[k]][1:46, 3] +
-    input$pca4*loadings[[k]][1:46, 4]
+  k = 2
+  campca = campca + input$pca1*loadings[[k]][1:25, 1] +
+    input$pca2*loadings[[k]][1:25, 2] +
+    input$pca3*loadings[[k]][1:25, 3] +
+    input$pca4*loadings[[k]][1:25, 4]
   
   
-  xs <- campca[seq(1, 44, 2)] %>% as.numeric()
-  ys <- campca[seq(2, 44, 2)] %>% as.numeric()
+  xs <- campca[seq(1, 22, 2)] %>% as.numeric()
+  ys <- campca[seq(2, 22, 2)] %>% as.numeric()
   
-  col <- rep(c('red', 'black'), each=11)
+  col <- rep(c('red'), each=11)
   
   plot.new()
   lim <- par()
@@ -78,6 +80,7 @@ output$unsized <- renderPlot({
        col = col, main = sprintf('Para o grupo %s', k))
   legenda_jogador(xs, ys)
 })
+
 renderUI(
   plotOutput('unsized', width = '525px', height = '340px')
 )

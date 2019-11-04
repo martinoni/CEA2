@@ -78,7 +78,7 @@ clusters_ataques <- 1:length(cl_atq1A) %>%
 colnames(clusters_ataques) <- c('ataque', 'atqA', 'atqB', 'defA', 'defB')
 
 
-#Tratamento do jogo:
+#Tratamento do jogo k (escolher qual dos 5 jogos):
 jogo <- read.delim("~/Development/IME/cea2/CEA2/jogo1ime_completo.txt")
 ataque_posse <- paste0(jogo$ataque, '_', jogo$posse)
 clust_ataqueA <- c()
@@ -117,6 +117,10 @@ ataquesB_defesasA <- jogo[stri_detect_fixed(ataque_posse, '_EB'),] %>%
   cbind(clust_defA)
 
 
+#aqui eu vou filtrar a prte da base de dados que só tem o time A pro ataque do time A, por exemplo (e assim vai)
+ataquesA_defesasB <- ataquesA_defesasB[, c(1:31, 53:56, 59:70, 81)]
+
+
 
 for(coluna in colnames(ataquesA_defesasB)){
   ataquesA_defesasB[[coluna]] <- as.numeric(ataquesA_defesasB[[coluna]])
@@ -129,8 +133,9 @@ n_clusts <- clust_ataqueA %>% levels() %>% length()
 pcas <- list()
 loadings <- list()
 for(k in 1:n_clusts){
-  dados_em_questao_nao_normalizados <- ataquesA_defesasB[ataquesA_defesasB$clust_ataqueA == k, c(6,7,9:54)]
-  dados_em_questao <- ataquesA_defesasB[ataquesA_defesasB$clust_ataqueA == k, c(6,7,9:54)] %>% 
+  dados_em_questao_nao_normalizados <- ataquesA_defesasB[ataquesA_defesasB$clust_ataqueA == k, c(6,7,9:47)]
+  #mudar pra 31 pra times separadaos e 54 pros dois times:s
+  dados_em_questao <- ataquesA_defesasB[ataquesA_defesasB$clust_ataqueA == k, c(6,7,9:47)] %>% 
     normalize()
   pca_em_questao <- principal(dados_em_questao,
                               scores=T, missing = T, 
