@@ -24,8 +24,9 @@ for (i in 1:jogo1.A$ataque[nrow(jogo1.A)]){
     des.centDef <- des.centDef + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq1.A <- rbind(atq1.A,atq.atual)
   def1.B <- rbind(def1.B,def.atual)
 }
@@ -55,8 +56,9 @@ for (i in 1:jogo1.B$ataque[nrow(jogo1.B)]){
     des.centAtq <- des.centAtq + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq1.B <- rbind(atq1.B,atq.atual)
   def1.A <- rbind(def1.A,def.atual)
 }
@@ -88,8 +90,9 @@ for (i in 1:jogo2.A$ataque[nrow(jogo2.A)]){
     des.centDef <- des.centDef + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq2.A <- rbind(atq2.A,atq.atual)
   def2.B <- rbind(def2.B,def.atual)
 }
@@ -119,8 +122,9 @@ for (i in 1:jogo2.B$ataque[nrow(jogo2.B)]){
     des.centAtq <- des.centAtq + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq2.B <- rbind(atq2.B,atq.atual)
   def2.A <- rbind(def2.A,def.atual)
 }
@@ -152,8 +156,9 @@ for (i in 1:jogo3.A$ataque[nrow(jogo3.A)]){
     des.centDef <- des.centDef + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq3.A <- rbind(atq3.A,atq.atual)
   def3.B <- rbind(def3.B,def.atual)
 }
@@ -183,8 +188,9 @@ for (i in 1:jogo3.B$ataque[nrow(jogo3.B)]){
     des.centAtq <- des.centAtq + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq3.B <- rbind(atq3.B,atq.atual)
   def3.A <- rbind(def3.A,def.atual)
 }
@@ -216,8 +222,9 @@ for (i in 1:jogo4.A$ataque[nrow(jogo4.A)]){
     des.centDef <- des.centDef + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq4.A <- rbind(atq4.A,atq.atual)
   def4.B <- rbind(def4.B,def.atual)
 }
@@ -247,8 +254,9 @@ for (i in 1:jogo4.B$ataque[nrow(jogo4.B)]){
     des.centAtq <- des.centAtq + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq4.B <- rbind(atq4.B,atq.atual)
   def4.A <- rbind(def4.A,def.atual)
 }
@@ -280,8 +288,9 @@ for (i in 1:jogo5.A$ataque[nrow(jogo5.A)]){
     des.centDef <- des.centDef + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq5.A <- rbind(atq5.A,atq.atual)
   def5.B <- rbind(def5.B,def.atual)
 }
@@ -311,11 +320,12 @@ for (i in 1:jogo5.B$ataque[nrow(jogo5.B)]){
     des.centAtq <- des.centAtq + 
       sqrt(((atq$ncentEBx[j+1]-atq$ncentEBx[j])^2)+((atq$ncentEBy[j+1]-atq$ncentEBy[j])^2))
   }
-  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def)
-  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq)
+  desfecho <- atq$desf_ataque[1]
+  atq.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centAtqx,centAtqy,bolax,bolay,des.centAtq,des.bola,area.Atq,desfecho)
+  def.atual <- data.frame(ataque,duracao,qtde_acoes,ac_d,centDefx,centDefy,bolax,bolay,des.centDef,des.bola,area.Def,desfecho)
   atq5.B <- rbind(atq5.B,atq.atual)
   def5.A <- rbind(def5.A,def.atual)
 }
 
 rm("atq","ataque","qtde_acoes","duracao","ac_d","centAtqx","centAtqy","centDefx","centDefy","bolax","bolay",
-   "area.Atq","area.Def","des.bola","des.centAtq","des.centDef","def.atual","atq.atual")
+   "area.Atq","area.Def","des.bola","des.centAtq","des.centDef","def.atual","atq.atual","desfecho")
