@@ -90,3 +90,42 @@ ggplot(def1.B, aes(x = bolax,y = bolay, color = as.factor(cl_def1B))) +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('GD1B_bolaxy.png', plot = last_plot())
 
+#####################################SÉRIE TEMPORAL DOS GRUPOS##################################
+trans.matrix <- function(X, prob=T)
+{
+  tt <- table( c(X[,-ncol(X)]), c(X[,-1]) )
+  if(prob) tt <- tt / rowSums(tt)
+  tt
+}
+
+tm.atq1A <- trans.matrix(t(as.matrix(cl_atq1A)))
+tm.atq1B <- trans.matrix(t(as.matrix(cl_atq1B)))
+
+tm.def1A <- trans.matrix(t(as.matrix(cl_def1A)))
+tm.def1B <- trans.matrix(t(as.matrix(cl_def1B)))
+
+ggplot(compar1.A) +
+  geom_line(aes(x = ataque,y = as.numeric(Atq), color = "A(Ataque)")) +
+  geom_point(aes(x = ataque,y = as.numeric(Atq), color = "A(Ataque)")) +
+  geom_line(aes(x = ataque,y = as.numeric(Def), color = "B(Defesa)")) +
+  geom_point(aes(x = ataque,y = as.numeric(Def), color = "B(Defesa)")) +
+  ggtitle("Jogo 1 - Ataque Time A vs Defesa Time B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A1AvD1B.png', plot = last_plot())
+
+ggplot(compar1.B) +
+  geom_line(aes(x = ataque,y = as.numeric(Atq), color = "B(Ataque)")) +
+  geom_point(aes(x = ataque,y = as.numeric(Atq), color = "B(Ataque)")) +
+  geom_line(aes(x = ataque,y = as.numeric(Def), color = "A(Defesa)")) +
+  geom_point(aes(x = ataque,y = as.numeric(Def), color = "A(Defesa)")) +
+  ggtitle("Jogo 1 - Ataque Time B vs Defesa Time A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A1BvD1A.png', plot = last_plot())
+
+dat<-data.frame(replicate(20,sample(c("A", "B", "C","D"), size = 100, replace=TRUE)))
