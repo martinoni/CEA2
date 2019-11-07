@@ -140,5 +140,7 @@ ggplot(b1A, aes(x=time, y=area, fill = time)) +
   scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
   ggtitle("Jogo 1 - Boxplot Área") +
   theme_bw() +
-  theme(axis.text=element_text(size=12),
-        axis.title=element_text(hjust = 0.5))
+  labs(y = "Área")+
+  theme(axis.text=element_text(size=15),axis.title=element_text(size=15,face="bold"),legend.position="none",
+        plot.title = element_text(hjust = 0.5))
+ggsave('G1_boxArea.png', plot = last_plot())
