@@ -129,3 +129,16 @@ ggplot(compar1.B) +
 ggsave('STG_A1BvD1A.png', plot = last_plot())
 
 dat<-data.frame(replicate(20,sample(c("A", "B", "C","D"), size = 100, replace=TRUE)))
+
+area <- c(c(jogo1.A$area.EA),c(jogo1.B$area.EB),c(jogo1.B$area.EA),c(jogo1.A$area.EB))
+time <- c(rep("ATQ A",nrow(jogo1.A)),rep("ATQ B",nrow(jogo1.B)),rep("DEF A",nrow(jogo1.B)),
+          rep("DEF B",nrow(jogo1.A)))
+b1A <- data.frame(area,time)
+
+ggplot(b1A, aes(x=time, y=area, fill = time)) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
+  ggtitle("Jogo 1 - Boxplot Área") +
+  theme_bw() +
+  theme(axis.text=element_text(size=12),
+        axis.title=element_text(hjust = 0.5))
