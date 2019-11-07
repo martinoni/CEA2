@@ -130,7 +130,7 @@ tm.def5B <- trans.matrix(t(as.matrix(cl_def5B)))
 
 l.1A <- data.frame(ataque = c(compar1.A$ataque,compar1.A$ataque), 
                    time = c(rep("Atq", nrow(compar1.A)),rep("Def", nrow(compar1.A))), 
-                   grupo = c(compar1.A$Atq, compar1.B$Def))
+                   grupo = c(compar1.A$Atq, compar1.A$Def))
 
 l.1B <- data.frame(ataque = c(compar1.B$ataque,compar1.B$ataque), 
                    time = c(rep("Atq", nrow(compar1.B)),rep("Def", nrow(compar1.B))), 
@@ -146,9 +146,6 @@ ggplot(l.1A,aes(x = ataque,y = as.numeric(grupo), color = time)) +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A1AvD1B.png', plot = last_plot())
 
-l.1B <- data.frame(ataque = c(compar1.B$ataque,compar1.B$ataque), 
-                   time = c(rep("Atq", nrow(compar1.B)),rep("Def", nrow(compar1.B))), 
-                   grupo = c(compar1.B$Atq, compar1.B$Def))
 ggplot(l.1B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
@@ -159,6 +156,117 @@ ggplot(l.1B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A1BvD1A.png', plot = last_plot())
 
+l.2A <- data.frame(ataque = c(compar2.A$ataque,compar2.A$ataque), 
+                   time = c(rep("Atq", nrow(compar2.A)),rep("Def", nrow(compar2.A))), 
+                   grupo = c(compar2.A$Atq, compar2.A$Def))
+
+l.2B <- data.frame(ataque = c(compar2.B$ataque,compar2.B$ataque), 
+                   time = c(rep("Atq", nrow(compar2.B)),rep("Def", nrow(compar2.B))), 
+                   grupo = c(compar2.B$Atq, compar2.B$Def))
+
+ggplot(l.2A,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 2 - Ataque Time A vs Defesa Time B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A2AvD2B.png', plot = last_plot())
+
+ggplot(l.2B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 2 - Ataque Time B vs Defesa Time A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A2BvD2A.png', plot = last_plot())
+
+l.3A <- data.frame(ataque = c(compar3.A$ataque,compar3.A$ataque), 
+                   time = c(rep("Atq", nrow(compar3.A)),rep("Def", nrow(compar3.A))), 
+                   grupo = c(compar3.A$Atq, compar3.A$Def))
+
+l.3B <- data.frame(ataque = c(compar3.B$ataque,compar3.B$ataque), 
+                   time = c(rep("Atq", nrow(compar3.B)),rep("Def", nrow(compar3.B))), 
+                   grupo = c(compar3.B$Atq, compar3.B$Def))
+
+ggplot(l.3A,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 3 - Ataque Time A vs Defesa Time B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A3AvD3B.png', plot = last_plot())
+
+ggplot(l.3B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 3 - Ataque Time B vs Defesa Time A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A3BvD3A.png', plot = last_plot())
+
+l.4A <- data.frame(ataque = c(compar4.A$ataque,compar4.A$ataque), 
+                   time = c(rep("Atq", nrow(compar4.A)),rep("Def", nrow(compar4.A))), 
+                   grupo = c(compar4.A$Atq, compar4.A$Def))
+
+l.4B <- data.frame(ataque = c(compar4.B$ataque,compar4.B$ataque), 
+                   time = c(rep("Atq", nrow(compar4.B)),rep("Def", nrow(compar4.B))), 
+                   grupo = c(compar4.B$Atq, compar4.B$Def))
+
+ggplot(l.4A,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 4 - Ataque Time A vs Defesa Time B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A4AvD4B.png', plot = last_plot())
+
+ggplot(l.4B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 4 - Ataque Time B vs Defesa Time A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A4BvD4A.png', plot = last_plot())
+
+l.5A <- data.frame(ataque = c(compar5.A$ataque,compar5.A$ataque), 
+                   time = c(rep("Atq", nrow(compar5.A)),rep("Def", nrow(compar5.A))), 
+                   grupo = c(compar5.A$Atq, compar5.A$Def))
+
+l.5B <- data.frame(ataque = c(compar5.B$ataque,compar5.B$ataque), 
+                   time = c(rep("Atq", nrow(compar5.B)),rep("Def", nrow(compar5.B))), 
+                   grupo = c(compar5.B$Atq, compar5.B$Def))
+
+ggplot(l.5A,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 5 - Ataque Time A vs Defesa Time B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A5AvD5B.png', plot = last_plot())
+
+ggplot(l.5B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
+  ggtitle("Jogo 5 - Ataque Time B vs Defesa Time A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
+  scale_color_manual(values= cor5) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+ggsave('STG_A5BvD5A.png', plot = last_plot())
 #################################BOXPLOT pRIMEIRA APRESENTAÇÃO####################################
 area <- c(c(jogo1.A$area.EA),c(jogo1.B$area.EB),c(jogo1.B$area.EA),c(jogo1.A$area.EB))
 time <- c(rep("ATQ A",nrow(jogo1.A)),rep("ATQ B",nrow(jogo1.B)),rep("DEF A",nrow(jogo1.B)),
@@ -171,6 +279,61 @@ ggplot(b1A, aes(x=time, y=area, fill = time)) +
   ggtitle("Jogo 1 - Boxplot Área") +
   theme_bw() +
   labs(y = "Área")+
-  theme(axis.text=element_text(size=15),axis.title=element_text(size=15,face="bold"),legend.position="none",
-        plot.title = element_text(hjust = 0.5))
+  theme(legend.position="none", plot.title = element_text(hjust = 0.5))
 ggsave('G1_boxArea.png', plot = last_plot())
+
+area <- c(c(jogo2.A$area.EA),c(jogo2.B$area.EB),c(jogo2.B$area.EA),c(jogo2.A$area.EB))
+time <- c(rep("ATQ A",nrow(jogo2.A)),rep("ATQ B",nrow(jogo2.B)),rep("DEF A",nrow(jogo2.B)),
+          rep("DEF B",nrow(jogo2.A)))
+b2A <- data.frame(area,time)
+
+ggplot(b2A, aes(x=time, y=area, fill = time)) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
+  ggtitle("Jogo 2 - Boxplot Área") +
+  theme_bw() +
+  labs(y = "Área")+
+  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+ggsave('G2_boxArea.png', plot = last_plot())
+
+area <- c(c(jogo3.A$area.EA),c(jogo3.B$area.EB),c(jogo3.B$area.EA),c(jogo3.A$area.EB))
+time <- c(rep("ATQ A",nrow(jogo3.A)),rep("ATQ B",nrow(jogo3.B)),rep("DEF A",nrow(jogo3.B)),
+          rep("DEF B",nrow(jogo3.A)))
+b3A <- data.frame(area,time)
+
+ggplot(b3A, aes(x=time, y=area, fill = time)) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
+  ggtitle("Jogo 3 - Boxplot Área") +
+  theme_bw() +
+  labs(y = "Área")+
+  theme(legend.position="none", plot.title = element_text(hjust = 0.5))
+ggsave('G3_boxArea.png', plot = last_plot())
+
+area <- c(c(jogo4.A$area.EA),c(jogo4.B$area.EB),c(jogo4.B$area.EA),c(jogo4.A$area.EB))
+time <- c(rep("ATQ A",nrow(jogo4.A)),rep("ATQ B",nrow(jogo4.B)),rep("DEF A",nrow(jogo4.B)),
+          rep("DEF B",nrow(jogo4.A)))
+b4A <- data.frame(area,time)
+
+ggplot(b4A, aes(x=time, y=area, fill = time)) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
+  ggtitle("Jogo 4 - Boxplot Área") +
+  theme_bw() +
+  labs(y = "Área")+
+  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+ggsave('G4_boxArea.png', plot = last_plot())
+
+area <- c(c(jogo5.A$area.EA),c(jogo5.B$area.EB),c(jogo5.B$area.EA),c(jogo5.A$area.EB))
+time <- c(rep("ATQ A",nrow(jogo5.A)),rep("ATQ B",nrow(jogo5.B)),rep("DEF A",nrow(jogo5.B)),
+          rep("DEF B",nrow(jogo5.A)))
+b5A <- data.frame(area,time)
+
+ggplot(b5A, aes(x=time, y=area, fill = time)) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
+  ggtitle("Jogo 5 - Boxplot Área") +
+  theme_bw() +
+  labs(y = "Área")+
+  theme(legend.position="none",plot.title = element_text(hjust = 0.5))
+ggsave('G5_boxArea.png', plot = last_plot())
