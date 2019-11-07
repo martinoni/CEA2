@@ -104,11 +104,41 @@ tm.atq1B <- trans.matrix(t(as.matrix(cl_atq1B)))
 tm.def1A <- trans.matrix(t(as.matrix(cl_def1A)))
 tm.def1B <- trans.matrix(t(as.matrix(cl_def1B)))
 
-ggplot(compar1.A) +
-  geom_line(aes(x = ataque,y = as.numeric(Atq), color = "A(Ataque)")) +
-  geom_point(aes(x = ataque,y = as.numeric(Atq), color = "A(Ataque)")) +
-  geom_line(aes(x = ataque,y = as.numeric(Def), color = "B(Defesa)")) +
-  geom_point(aes(x = ataque,y = as.numeric(Def), color = "B(Defesa)")) +
+tm.atq2A <- trans.matrix(t(as.matrix(cl_atq2A)))
+tm.atq2B <- trans.matrix(t(as.matrix(cl_atq2B)))
+
+tm.def2A <- trans.matrix(t(as.matrix(cl_def2A)))
+tm.def2B <- trans.matrix(t(as.matrix(cl_def2B)))
+
+tm.atq3A <- trans.matrix(t(as.matrix(cl_atq3A)))
+tm.atq3B <- trans.matrix(t(as.matrix(cl_atq3B)))
+
+tm.def3A <- trans.matrix(t(as.matrix(cl_def3A)))
+tm.def3B <- trans.matrix(t(as.matrix(cl_def3B)))
+
+tm.atq4A <- trans.matrix(t(as.matrix(cl_atq4A)))
+tm.atq4B <- trans.matrix(t(as.matrix(cl_atq4B)))
+
+tm.def4A <- trans.matrix(t(as.matrix(cl_def4A)))
+tm.def4B <- trans.matrix(t(as.matrix(cl_def4B)))
+
+tm.atq5A <- trans.matrix(t(as.matrix(cl_atq5A)))
+tm.atq5B <- trans.matrix(t(as.matrix(cl_atq5B)))
+
+tm.def5A <- trans.matrix(t(as.matrix(cl_def5A)))
+tm.def5B <- trans.matrix(t(as.matrix(cl_def5B)))
+
+l.1A <- data.frame(ataque = c(compar1.A$ataque,compar1.A$ataque), 
+                   time = c(rep("Atq", nrow(compar1.A)),rep("Def", nrow(compar1.A))), 
+                   grupo = c(compar1.A$Atq, compar1.B$Def))
+
+l.1B <- data.frame(ataque = c(compar1.B$ataque,compar1.B$ataque), 
+                   time = c(rep("Atq", nrow(compar1.B)),rep("Def", nrow(compar1.B))), 
+                   grupo = c(compar1.B$Atq, compar1.B$Def))
+
+ggplot(l.1A,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
   ggtitle("Jogo 1 - Ataque Time A vs Defesa Time B") +
   labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
   scale_color_manual(values= cor5) +
@@ -116,11 +146,12 @@ ggplot(compar1.A) +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A1AvD1B.png', plot = last_plot())
 
-ggplot(compar1.B) +
-  geom_line(aes(x = ataque,y = as.numeric(Atq), color = "B(Ataque)")) +
-  geom_point(aes(x = ataque,y = as.numeric(Atq), color = "B(Ataque)")) +
-  geom_line(aes(x = ataque,y = as.numeric(Def), color = "A(Defesa)")) +
-  geom_point(aes(x = ataque,y = as.numeric(Def), color = "A(Defesa)")) +
+l.1B <- data.frame(ataque = c(compar1.B$ataque,compar1.B$ataque), 
+                   time = c(rep("Atq", nrow(compar1.B)),rep("Def", nrow(compar1.B))), 
+                   grupo = c(compar1.B$Atq, compar1.B$Def))
+ggplot(l.1B,aes(x = ataque,y = as.numeric(grupo), color = time)) +
+  geom_line(linetype = "longdash") +
+  geom_point() +
   ggtitle("Jogo 1 - Ataque Time B vs Defesa Time A") +
   labs(x = "Nº Ataque", y = "Grupo", color = "Time") +
   scale_color_manual(values= cor5) +
@@ -128,4 +159,18 @@ ggplot(compar1.B) +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A1BvD1A.png', plot = last_plot())
 
-dat<-data.frame(replicate(20,sample(c("A", "B", "C","D"), size = 100, replace=TRUE)))
+#################################BOXPLOT pRIMEIRA APRESENTAÇÃO####################################
+area <- c(c(jogo1.A$area.EA),c(jogo1.B$area.EB),c(jogo1.B$area.EA),c(jogo1.A$area.EB))
+time <- c(rep("ATQ A",nrow(jogo1.A)),rep("ATQ B",nrow(jogo1.B)),rep("DEF A",nrow(jogo1.B)),
+          rep("DEF B",nrow(jogo1.A)))
+b1A <- data.frame(area,time)
+
+ggplot(b1A, aes(x=time, y=area, fill = time)) +
+  geom_boxplot() +
+  scale_fill_manual(values=c("red", "blue", "red4", "midnightblue")) +
+  ggtitle("Jogo 1 - Boxplot Área") +
+  theme_bw() +
+  labs(y = "Área")+
+  theme(axis.text=element_text(size=15),axis.title=element_text(size=15,face="bold"),legend.position="none",
+        plot.title = element_text(hjust = 0.5))
+ggsave('G1_boxArea.png', plot = last_plot())
