@@ -31,14 +31,14 @@ pairs(atq3.B[,2:11], pch=16, col=corg, cex=0.6)
 pairs(atq1.A[,2:11], pch=16, col=corg, cex=0.6)
 
 
-ggplot(atq1.A, aes(x = area.Atq,y = des.bola, color = as.factor(cl_atq1A))) +
+ggplot(atq1.A, aes(x = area.Atq,y = des.centAtq, color = as.factor(cl_atq1A))) +
   geom_point(pch = 16) +
   scale_color_manual(values= cor5) +
   ggtitle("Jogo 1 - Ataque Time A") +
-  labs(x = "Área Média do Ataque (m²)", y = "Deslocamento da Bola no Ataque (m)", color = "Grupo") +
+  labs(x = "Área Média do Ataque (m²)", y = "Deslocamento do Centroide no Ataque (m)", color = "Grupo") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
-ggsave('GA1A_area_desbola.png', plot = last_plot())
+ggsave('GA1A_area_descen.png', plot = last_plot())
 
 ggplot(atq1.B, aes(x = area.Atq,y = des.bola, color = as.factor(cl_atq1B))) +
   geom_point(pch = 16) +
@@ -72,14 +72,14 @@ png('Desen.Grup_D1B.png', width=7*ppi, height=6*ppi, res=ppi)
 pairs(def1.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Defesa Time B")
 dev.off()
 
-ggplot(def1.A, aes(x = bolax,y = bolay, color = as.factor(cl_def1A))) +
+ggplot(def1.A, aes(x = area.Def,y = des.centDef, color = as.factor(cl_def1A))) +
   geom_point(pch = 16) +
   scale_color_manual(values= cor5) +
   ggtitle("Jogo 1 - Defesa Time A") +
-  labs(x = "Posição Média Bola(X) (m)", y = "Posição Média Bola(Y) (m)", color = "Grupo") +
+  labs(x = "Área Média do Ataque (m²)", y = "Deslocamento do Centroide no Ataque (m)", color = "Grupo") +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
-ggsave('GD1A_bolaxy.png', plot = last_plot())
+ggsave('GD1A_area_descent.png', plot = last_plot())
 
 ggplot(def1.B, aes(x = bolax,y = bolay, color = as.factor(cl_def1B))) +
   geom_point(pch = 16) +
