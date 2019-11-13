@@ -51,35 +51,64 @@ ggplot(data = df.m, aes(x=variable, y=value)) + geom_boxplot(aes(fill=grupo)) +
 ######################################################################
 
 # tentativa falha de fazer com as variaveis do borto abaixp:
-ataque1A <- cbind(atq1.A, clust)
-colnames(ataque1A) <- c(colnames(ataque1A)[1:ncol(ataque1A)-1], 'grupo')
+nome = def1.B
+ataque1A <- nome[, c(2:3, 5:ncol(nome))]
+colnames(ataque1A) <- c('Duração', 'Quantidade de Ações',
+                        'Centroide Time x', 'Centroide Time y', 'Bola x', 'Bola y',
+                        'Deslocamento Centroide Time', 'Deslocamento Bola', 'Área de defesa',
+                        'Grupo')
 library(BBmisc)
-ataque1A[, 1:11] <- ataque1A[, 1:11] %>% normalize()
-df.m <- melt(ataque1A[1:12], id.var = "grupo")
-df.m$grupo <- as.factor(df.m$grupo)
+library(reshape2)
+ataque1A[, 1:9] <- ataque1A[, 1:9] %>% normalize()
+df.m <- melt(ataque1A, id.var = "Grupo")
+df.m$Grupo <- as.factor(df.m$Grupo)
 require(ggplot2)
-ggplot(data = df.m, aes(x=variable, y=value)) + geom_boxplot(aes(fill=grupo)) +
-  xlab('Variável do borto') +
-  ylab('Valor da variável') +
-  theme(axis.text.x=element_text(color = "black", size=11, angle=30, vjust=.8, hjust=0.8)) 
+ggplot(data = df.m, aes(x=variable, y=value)) + geom_boxplot(aes(fill=Grupo)) +
+  xlab('Variável') +
+  ylab('Valor normalizado da variável') +
+  theme(axis.text.x=element_text(color = "black", size=14, angle=30, vjust=.8, hjust=0.8),
+        axis.title = element_text(size=14), text = element_text(size = 14),
+        plot.title = element_text(hjust = 0.5)) +
+  ggtitle('Jogo 1: Defesa time B')
 
+ggsave(sprintf('~/Development/IME/cea2/CEA2/descritiva/boxplots_borto/todos/defesa/jogo1_def_B.png'))
+
+
+#Boxplot separado
+nome = def3.B
+ataque1A <- nome[, c(2:3, 5:ncol(nome))]
+colnames(ataque1A) <- c('Duração', 'Quantidade de Ações',
+                        'Centroide Time x', 'Centroide Time y', 'Bola x', 'Bola y',
+                        'Deslocamento Centroide Time', 'Deslocamento Bola', 'Área de defesa',
+                        'Grupo')
+
+ataque1A <- ataque1A[, c('Bola y', 'Grupo')]
+library(BBmisc)
+df.m <- melt(ataque1A, id.var = "Grupo")
+df.m$Grupo <- as.factor(df.m$Grupo)
+require(ggplot2)
+ggplot(data = df.m, aes(x=variable, y=value)) + geom_boxplot(aes(fill=Grupo)) +
+  xlab('Posição vertical do centroide do time (por grupo)') +
+  ylab('Valor da variável (m)') +
+  theme(axis.text.x=element_text(color = "black", size=0, angle=30, vjust=.8, hjust=0.8),
+        axis.title = element_text(size=14), text = element_text(size = 16))
 
 #######################################################################
 
 #Aqui começa o trampo que o fossa o borto e o LG pediram
 
 # criação de uma base auxiliar ligando os ataques a seus respectivos clusters
-clusters_ataques <- 1:length(cl_atq1A) %>% 
-  cbind(cl_atq1A) %>% 
-  cbind(cl_atq1B) %>% 
-  cbind(cl_def1A) %>% 
-  cbind(cl_def1B) %>% 
+clusters_ataques <- 1:length(cl_atq2A) %>% 
+  cbind(cl_atq2A) %>% 
+  cbind(cl_atq2B) %>% 
+  cbind(cl_def2A) %>% 
+  cbind(cl_def2B) %>% 
   as.data.frame()
 colnames(clusters_ataques) <- c('ataque', 'atqA', 'atqB', 'defA', 'defB')
 
 
 #Tratamento do jogo k (escolher qual dos 5 jogos):
-jogo <- read.delim("~/Development/IME/cea2/CEA2/jogo1ime_completo.txt")
+jogo <- read.delim("~/Development/IME/cea2/CEA2/jogo2ime_completo.txt")
 ataque_posse <- paste0(jogo$ataque, '_', jogo$posse)
 clust_ataqueA <- c()
 clust_ataqueB <- c()
@@ -118,24 +147,30 @@ ataquesB_defesasA <- jogo[stri_detect_fixed(ataque_posse, '_EB'),] %>%
 
 
 #aqui eu vou filtrar a prte da base de dados que só tem o time A pro ataque do time A, por exemplo (e assim vai)
-ataquesA_defesasB <- ataquesA_defesasB[, c(1:31, 53:56, 59:70, 81)]
-
+ataquesA_defesasB <- ataquesA_defesasB[, c(1:30, 53:56, 59:70, 81)]
+ataquesB_defesasA <- ataquesB_defesasA[, c(1:30, 53:56, 59:70, 82)]
 
 
 for(coluna in colnames(ataquesA_defesasB)){
-  ataquesA_defesasB[[coluna]] <- as.numeric(ataquesA_defesasB[[coluna]])
+  ataquesA_defesasB[[coluna]] <- as.numeric(as.character(ataquesA_defesasB[[coluna]]))
 }
 
+for(coluna in colnames(ataquesB_defesasA)){
+  ataquesB_defesasA[[coluna]] <- as.numeric(ataquesB_defesasA[[coluna]])
+}
+
+# Mudar aqui se eh ataque ou defesa pro time A ou pro time B
 library(psych)
 library(BBmisc)
-clusters <- clust_ataqueA
-n_clusts <- clust_ataqueA %>% levels() %>% length()
+clusters <- clust_ataqueA %>% as.character() %>% as.numeric()
+ataquesA_defesasB$clust_ataqueA <- clusters
+n_clusts <- clust_defA %>% levels() %>% length()
 pcas <- list()
 loadings <- list()
 for(k in 1:n_clusts){
   dados_em_questao_nao_normalizados <- ataquesA_defesasB[ataquesA_defesasB$clust_ataqueA == k, c(6,7,9:47)]
   #mudar pra 31 pra times separadaos e 54 pros dois times:s
-  dados_em_questao <- ataquesA_defesasB[ataquesA_defesasB$clust_ataqueA == k, c(6,7,9:47)] %>% 
+  dados_em_questao <- ataquesA_defesasB[clust_ataqueA == k, c(6,7,9:46)] %>% 
     normalize()
   pca_em_questao <- principal(dados_em_questao,
                               scores=T, missing = T, 
@@ -146,7 +181,35 @@ for(k in 1:n_clusts){
 }
 
 save(loadings,
-     file = '~/Development/IME/cea2/CEA2/PCA_por_grupos/pcas_ataquesA_defesasB.RData')
+     file = '~/Development/IME/cea2/CEA2/PCA_por_grupos/pcas_ataquesA_defesasB2.RData')
+save(dados_em_questao_nao_normalizados,
+     file = '~/Development/IME/cea2/CEA2/PCA_por_grupos/dados_em_questao2.RData')
+
+
+
+
+# Mudar aqui se eh ataque ou defesa pro time A ou pro time B
+library(psych)
+library(BBmisc)
+clusters <- clust_defA
+ataquesB_defesasA$clust_defA <- clusters %>% as.numeric 
+n_clusts <- clust_defA %>% levels() %>% length()
+pcas <- list()
+loadings <- list()
+for(k in 1:n_clusts){
+  dados_em_questao_nao_normalizados <- ataquesB_defesasA[ataquesB_defesasA$clust_defA == k, c(6,7,9:47)]
+  #mudar pra 31 pra times separadaos e 54 pros dois times:s
+  dados_em_questao <- ataquesB_defesasA[ataquesB_defesasA$clust_defA == k, c(6,7,9:47)] %>%     normalize()
+  pca_em_questao <- principal(dados_em_questao,
+                              scores=T, missing = T, 
+                              nfactors = 4)
+  pcas <- append(pcas, list(pca_em_questao))
+  loadings <- loadings %>% 
+    append(list(pca_em_questao$loadings[]))
+}
+
+save(loadings,
+     file = '~/Development/IME/cea2/CEA2/PCA_por_grupos/pcas_ataquesB_defesasA.RData')
 save(dados_em_questao_nao_normalizados,
      file = '~/Development/IME/cea2/CEA2/PCA_por_grupos/dados_em_questao.RData')
 

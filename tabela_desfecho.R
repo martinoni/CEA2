@@ -1,5 +1,5 @@
 library(dplyr)
-jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/CEA2/jogo1acao.txt", header=TRUE)
 
 
 ataque.A1 <- subset(jogo1ime, posse == "EA",select = c("ataque","desf_ataque"))
@@ -13,7 +13,7 @@ ataque.B1 %>% group_by(desf_ataque) %>%
   summarise(no_rows = length(ataque))
 
 library(dplyr)
-jogo2ime <- read.delim("~/Development/IME/cea2/jogo2acao.txt", header=TRUE)
+jogo2ime <- read.delim("~/Development/IME/cea2/CEA2/jogo2acao.txt", header=TRUE)
 
 
 ataque.A2 <- subset(jogo2ime, posse == "EA",select = c("ataque","desf_ataque"))
@@ -27,7 +27,7 @@ ataque.B2 %>% group_by(desf_ataque) %>%
   summarise(no_rows = length(ataque))
 
 library(dplyr)
-jogo3ime <- read.delim("~/Development/IME/cea2/jogo3acao.txt", header=TRUE)
+jogo3ime <- read.delim("~/Development/IME/cea2/CEA2/jogo3acao.txt", header=TRUE)
 
 
 ataque.A3 <- subset(jogo3ime, posse == "EA",select = c("ataque","desf_ataque"))
@@ -41,7 +41,7 @@ ataque.B3 %>% group_by(desf_ataque) %>%
   summarise(no_rows = length(ataque))
 
 library(dplyr)
-jogo4ime <- read.delim("~/Development/IME/cea2/jogo4acao.txt", header=TRUE)
+jogo4ime <- read.delim("~/Development/IME/cea2/CEA2/jogo4acao.txt", header=TRUE)
 
 
 ataque.A4 <- subset(jogo4ime, posse == "EA",select = c("ataque","desf_ataque"))
@@ -55,7 +55,7 @@ ataque.B4 %>% group_by(desf_ataque) %>%
   summarise(no_rows = length(ataque))
 
 library(dplyr)
-jogo5ime <- read.delim("~/Development/IME/cea2/jogo5acao.txt", header=TRUE)
+jogo5ime <- read.delim("~/Development/IME/cea2/CEA2/jogo5acao.txt", header=TRUE)
 
 
 ataque.A5 <- subset(jogo5ime, posse == "EA",select = c("ataque","desf_ataque"))

@@ -79,6 +79,7 @@ hist3D(z=z)
 posicoes_clusters <- list()
 
 n_clusts <- clusters %>% 
+  as.factor() %>% 
   levels %>% 
   length()
 
@@ -116,6 +117,9 @@ for(k in 1:n_clusts){
       scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
       xlab('X') +
       ylab('Y')
-    ggsave(sprintf('~/Development/IME/cea2/CEA2/descritiva/mapas_de_calor_clusters/j%s_g%s.png', l, k))
+    ggsave(sprintf('~/Development/IME/cea2/CEA2/descritiva/mapas_de_calor_clusters/j2_ataque_A/j%s_g%s.png', l, k),
+           width = 6.17, height = 4)
   }
 }
+
+system('rm /home/thiago/Development/IME/cea2/CEA2/descritiva/mapas_de_calor_clusters/*')

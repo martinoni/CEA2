@@ -13,10 +13,10 @@ library(plotly)
 # distancia da bola pro gol
 # 
 
-jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/CEA2/jogo1acao.txt", header=TRUE)
 jogo1ime <- na.omit(jogo1ime)
 
-setwd('~/Development/IME/cea2/')
+setwd('~/Development/IME/cea2/CEA2')
 ima <- readPNG('./campo/background_campo.png')
 
 area.EA <- c()
@@ -90,16 +90,17 @@ jogo1ime_escalado <- cbind(jogo1ime_escalado, ataque_posseEA, ataque_posseEB)
 
 
 
-
+  
 
 
 plot(AA~tempo, xlim = c(0, nrow(jogo1ime_escalado)), data = jogo1ime[1,], 
      col = 'red', lty=0, type = 'l', ylab = 'Área do Polígono',
-     xlab = 'Tempo', ylim = c(400, 2000))
+     xlab = 'Tempo', ylim = c(400, 2000), 
+     cex.lab=1.4, cex.axis = 1.3)
 tempo <- 1
 abline(v=tempo, lty = 3, col = 'red')
 text(x=tempo, y=2000, labels = sprintf('A%s',
-                                            ataque[tempo]), col='red', cex=.8)
+                                            ataque[tempo]), col='red', cex=1.2)
 linha_EA <- 1
 linha_EB <- 1
 
@@ -108,17 +109,17 @@ for(tempo in jogo1ime_escalado$tempo[2:nrow(jogo1ime_escalado)]){
   if(ataque_posseEA[tempo] != ataque_posseEA[tempo-1]){
     abline(v=tempo, lty = 3, col = 'red')
     text(x=tempo, y=450, labels = sprintf('d%s',
-                                                 desf_ataque[tempo]), col='blue',cex=.8)
+                                                 desf_ataque[tempo]), col='blue',cex=1.2)
     text(x=tempo, y=2000, labels = sprintf('A%s',
-                                                ataque[tempo]), col='red', cex=.8)
+                                                ataque[tempo]), col='red', cex=1.2)
   }
   
   if(ataque_posseEB[tempo] != ataque_posseEB[tempo-1]){
     abline(v=tempo, lty = 3, col = 'blue')
     text(x=tempo, y=450, labels = sprintf('d%s',
-                                                 desf_ataque[tempo]), col='red',cex=.8)
+                                                 desf_ataque[tempo]), col='red',cex=1.2)
     text(x=tempo, y=2000, labels = sprintf('B%s',
-                                                ataque[tempo]), col='blue', cex=.8)
+                                                ataque[tempo]), col='blue', cex=1.2)
   }
   
   lines(AA~tempo, data=jogo1ime_escalado[c(tempo-1, tempo-2),], col='red',
@@ -127,7 +128,7 @@ for(tempo in jogo1ime_escalado$tempo[2:nrow(jogo1ime_escalado)]){
         lty = linha_EB)
 }
 
-legend(0, 1975, col = 'red', legend = 'TIME A', box.col = 'red', border = 'red', fill = 'red', cex = 0.7)
-legend(0, 1875, col = 'blue', legend = 'TIME B', box.col = 'blue', border = 'blue', fill = 'blue', cex = 0.7)
+legend(13, 1975, col = 'red', legend = 'TIME A', box.col = 'red', border = 'red', fill = 'red', cex = 1.2)
+legend(13, 1825, col = 'blue', legend = 'TIME B', box.col = 'blue', border = 'blue', fill = 'blue', cex = 1.2)
 
 

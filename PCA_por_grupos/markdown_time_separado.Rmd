@@ -1,5 +1,5 @@
 ---
-title: "Rolê"
+title: "PCA por grupo"
 runtime: shiny
 output:
   html_document:
@@ -54,10 +54,32 @@ shinyUI(
 )
 ```
 
-### Componentes principais dos jogos:
-
 ```{r echo=FALSE}
-output$unsized <- renderPlot({
+output$unsized1 <- renderPlot({
+  k = 1
+  campca = campca + input$pca1*loadings[[k]][1:25, 1] +
+    input$pca2*loadings[[k]][1:25, 2] +
+    input$pca3*loadings[[k]][1:25, 3] +
+    input$pca4*loadings[[k]][1:25, 4]
+  
+  
+  xs <- campca[seq(1, 22, 2)] %>% as.numeric()
+  ys <- campca[seq(2, 22, 2)] %>% as.numeric()
+  
+  col <- rep(c('red'), each=11)
+  
+  plot.new()
+  lim <- par()
+  rasterImage(ima, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
+  par(new=TRUE)
+  plot(ys~xs,
+       xlim = c(0, 105), ylim = c(0, 68),
+       pch = c(rep(c(15, 17), each=11), 16),
+       col = col, main = sprintf('Para o grupo %s', k))
+  legenda_jogador(xs, ys)
+})
+
+output$unsized2 <- renderPlot({
   k = 2
   campca = campca + input$pca1*loadings[[k]][1:25, 1] +
     input$pca2*loadings[[k]][1:25, 2] +
@@ -81,7 +103,35 @@ output$unsized <- renderPlot({
   legenda_jogador(xs, ys)
 })
 
+output$unsized3 <- renderPlot({
+  k = 3
+  campca = campca + input$pca1*loadings[[k]][1:25, 1] +
+    input$pca2*loadings[[k]][1:25, 2] +
+    input$pca3*loadings[[k]][1:25, 3] +
+    input$pca4*loadings[[k]][1:25, 4]
+  
+  
+  xs <- campca[seq(1, 22, 2)] %>% as.numeric()
+  ys <- campca[seq(2, 22, 2)] %>% as.numeric()
+  
+  col <- rep(c('red'), each=11)
+  
+  plot.new()
+  lim <- par()
+  rasterImage(ima, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
+  par(new=TRUE)
+  plot(ys~xs,
+       xlim = c(0, 105), ylim = c(0, 68),
+       pch = c(rep(c(15, 17), each=11), 16),
+       col = col, main = sprintf('Para o grupo %s', k))
+  legenda_jogador(xs, ys)
+})
+
 renderUI(
-  plotOutput('unsized', width = '525px', height = '340px')
+  fluidRow(column(7, plotOutput('unsized1', width = '500px', height = '320px')),
+           column(2, plotOutput('unsized2', width = '500px', height = '320px')),
+           plotOutput('unsized3', width = '500px', height = '320px'))
 )
+
+
 ```

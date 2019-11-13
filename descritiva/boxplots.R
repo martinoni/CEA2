@@ -6,31 +6,32 @@ jogo1 <- read.delim("~/Development/IME/cea2/CEA2/jogo1acao.txt", header=TRUE) %>
   rbind(read.delim("~/Development/IME/cea2/CEA2/jogo5acao.txt", header=TRUE))
   
 
-ataques <- rbind(atq1.A, atq1.B, 
-                 atq2.A, atq2.B,
-                 atq3.A, atq3.B,
-                 atq4.A, atq4.B,
-                 atq5.A, atq5.B)
+ataques <- rbind(atq1.A[1:11])
+, atq1.B[1:11], 
+                 atq2.A[1:11], atq2.B[1:11],
+                 atq3.A[1:11], atq3.B[1:11],
+                 atq4.A[1:11], atq4.B[1:11],
+                 atq5.A[1:11], atq5.B[1:11])
 
-defesas <- rbind(def1.A, def1.B, 
-                 def2.A, def2.B,
-                 def3.A, def3.B,
-                 def4.A, def4.B,
-                 def5.A, def5.B)
+defesas <- rbind(def1.A[1:11], def1.B[1:11], 
+                 def2.A[1:11], def2.B[1:11],
+                 def3.A[1:11], def3.B[1:11],
+                 def4.A[1:11], def4.B[1:11],
+                 def5.A[1:11], def5.B[1:11])
 
 
-ataques <- cbind(ataques, desfechos)
+ataques <- cbind(ataques, desfechos[1:71,2])
 defesas <- cbind(defesas, desfechos)
 
 
-colnames(ataques) <- c(colnames(ataques)[1:length(colnames(ataques))-1], 'Desfecho')
+colnames(ataques) <- c('Ataque', 'Duração', 'Quantidade de Ações', 'Quantidade de ações por tempo',
+                       'Centroide Time x', 'Centroide Time y', 'Bola x', 'Bola y',
+                       'Deslocamento Centroide Time', 'Deslocamento Bola', 'Área de ataque', 'Desfecho')
 #colnames(ataques) <- c('Ações/minuto,
 #                       ')
-ataques <- ataques[, 4:13]
-ataques <- ataques[, c(1:8, 10)]
 library(BBmisc)
 ataques$Desfecho <- as.factor(ataques$Desfecho)
-ataques <- normalize(ataques)
+ataques <- normalize(ataques)[, 2:ncol(ataques)]
 library(reshape2)
 df.m <- melt(ataques, id.var = "Desfecho")
 require(ggplot2)
@@ -38,5 +39,7 @@ ggplot(data = df.m, aes(x=variable, y=value)) + geom_boxplot(aes(fill=Desfecho))
   xlab('Variável') +
   ylab('Valor padronizado') +
   ylim(c(-3, 3)) +
-  theme(axis.text.x=element_text(color = "black", size=11, angle=30, vjust=.8, hjust=0.8)) 
+  theme(axis.text.x=element_text(color = "black", size=14, angle=30, vjust=.8, hjust=0.8), 
+        text = element_text(size=15), plot.title = element_text(hjust = 0.5)) + 
+  ggtitle('Jogo 1 - Ataque time A')
   
