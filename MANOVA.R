@@ -119,19 +119,20 @@ razao_sq_atq2 <- function(atq,m.atq){
     sqd8 <- sqd8 + (atq$area.Atq[i]-m.atq$area.Atq[grupo])^2
     sqt8 <- sqt8 + (atq$area.Atq[i]-mean(atq$area.Atq))^2
   }
-  raz2 <- c((sqd1+sqd2)/(sqt1+sqt2),(sqd1+sqd3)/(sqt1+sqt3),(sqd1+sqd4)/(sqt1+sqt4),
+  raz2 <- c((sqd1/sqt1),(sqd1+sqd2)/(sqt1+sqt2),(sqd1+sqd3)/(sqt1+sqt3),(sqd1+sqd4)/(sqt1+sqt4),
             (sqd1+sqd5)/(sqt1+sqt5),(sqd1+sqd6)/(sqt1+sqt6),(sqd1+sqd7)/(sqt1+sqt7),
-            (sqd1+sqd8)/(sqt1+sqt8),0,(sqd2+sqd3)/(sqt2+sqt3),(sqd2+sqd4)/(sqt2+sqt4),
+            (sqd1+sqd8)/(sqt1+sqt8),1,(sqd2/sqt2),(sqd2+sqd3)/(sqt2+sqt3),(sqd2+sqd4)/(sqt2+sqt4),
             (sqd2+sqd5)/(sqt2+sqt5),(sqd2+sqd6)/(sqt2+sqt6),(sqd2+sqd7)/(sqt2+sqt7),
-            (sqd2+sqd8)/(sqt2+sqt8),0,0,(sqd3+sqd4)/(sqt3+sqt4), (sqd3+sqd5)/(sqt3+sqt5),
-            (sqd3+sqd6)/(sqt3+sqt6),(sqd3+sqd7)/(sqt3+sqt7),(sqd3+sqd8)/(sqt3+sqt8),0,0,0,
-            (sqd4+sqd5)/(sqt4+sqt5),(sqd4+sqd6)/(sqt4+sqt6),(sqd4+sqd7)/(sqt4+sqt7),
-            (sqd4+sqd8)/(sqt4+sqt8),0,0,0,0,(sqd5+sqd6)/(sqt5+sqt6),(sqd5+sqd7)/(sqt5+sqt7),
-            (sqd5+sqd8)/(sqt5+sqt8),0,0,0,0,0,(sqd6+sqd7)/(sqt6+sqt7),(sqd6+sqd8)/(sqt6+sqt8),
-            0,0,0,0,0,0,(sqd7+sqd8)/(sqt7+sqt8))
-  mraz <- matrix(raz2, ncol = 7)
-  colnames(mraz) <- colnames(atq)[4:10]
-  rownames(mraz) <- colnames(atq)[5:11]
+            (sqd2+sqd8)/(sqt2+sqt8),1,1,(sqd3/sqt3),(sqd3+sqd4)/(sqt3+sqt4), (sqd3+sqd5)/(sqt3+sqt5),
+            (sqd3+sqd6)/(sqt3+sqt6),(sqd3+sqd7)/(sqt3+sqt7),(sqd3+sqd8)/(sqt3+sqt8),1,1,1,
+            (sqd4/sqt4), (sqd4+sqd5)/(sqt4+sqt5),(sqd4+sqd6)/(sqt4+sqt6),(sqd4+sqd7)/(sqt4+sqt7),
+            (sqd4+sqd8)/(sqt4+sqt8),1,1,1,1,(sqd5/sqt5),(sqd5+sqd6)/(sqt5+sqt6),(sqd5+sqd7)/(sqt5+sqt7),
+            (sqd5+sqd8)/(sqt5+sqt8),1,1,1,1,1,(sqd6/sqt6),(sqd6+sqd7)/(sqt6+sqt7),(sqd6+sqd8)/(sqt6+sqt8),
+            1,1,1,1,1,1,(sqd7/sqt7),(sqd7+sqd8)/(sqt7+sqt8),1,1,1,1,1,1,1,(sqd8/sqt8))
+  raz2 <- 1 - raz2
+  mraz <- matrix(raz2, ncol = 8)
+  colnames(mraz) <- colnames(atq)[4:11]
+  rownames(mraz) <- colnames(atq)[4:11]
   return(mraz)
 }
 
@@ -181,19 +182,20 @@ razao_sq_atq_pad2 <- function(atq,m.atq){
     sqd8 <- sqd8 + (atq$area.Atq[i]-m.atq$area.Atq[grupo])^2
     sqt8 <- sqt8 + (atq$area.Atq[i]-mean(atq$area.Atq))^2
   }
-  raz2 <- c((sqd1+sqd2)/(sqt1+sqt2),(sqd1+sqd3)/(sqt1+sqt3),(sqd1+sqd4)/(sqt1+sqt4),
+  raz2 <- c((sqd1/sqt1),(sqd1+sqd2)/(sqt1+sqt2),(sqd1+sqd3)/(sqt1+sqt3),(sqd1+sqd4)/(sqt1+sqt4),
             (sqd1+sqd5)/(sqt1+sqt5),(sqd1+sqd6)/(sqt1+sqt6),(sqd1+sqd7)/(sqt1+sqt7),
-            (sqd1+sqd8)/(sqt1+sqt8),0,(sqd2+sqd3)/(sqt2+sqt3),(sqd2+sqd4)/(sqt2+sqt4),
+            (sqd1+sqd8)/(sqt1+sqt8),1,(sqd2/sqt2),(sqd2+sqd3)/(sqt2+sqt3),(sqd2+sqd4)/(sqt2+sqt4),
             (sqd2+sqd5)/(sqt2+sqt5),(sqd2+sqd6)/(sqt2+sqt6),(sqd2+sqd7)/(sqt2+sqt7),
-            (sqd2+sqd8)/(sqt2+sqt8),0,0,(sqd3+sqd4)/(sqt3+sqt4), (sqd3+sqd5)/(sqt3+sqt5),
-            (sqd3+sqd6)/(sqt3+sqt6),(sqd3+sqd7)/(sqt3+sqt7),(sqd3+sqd8)/(sqt3+sqt8),0,0,0,
-            (sqd4+sqd5)/(sqt4+sqt5),(sqd4+sqd6)/(sqt4+sqt6),(sqd4+sqd7)/(sqt4+sqt7),
-            (sqd4+sqd8)/(sqt4+sqt8),0,0,0,0,(sqd5+sqd6)/(sqt5+sqt6),(sqd5+sqd7)/(sqt5+sqt7),
-            (sqd5+sqd8)/(sqt5+sqt8),0,0,0,0,0,(sqd6+sqd7)/(sqt6+sqt7),(sqd6+sqd8)/(sqt6+sqt8),
-            0,0,0,0,0,0,(sqd7+sqd8)/(sqt7+sqt8))
-  mraz <- matrix(raz2, ncol = 7)
-  colnames(mraz) <- colnames(atq)[4:10]
-  rownames(mraz) <- colnames(atq)[5:11]
+            (sqd2+sqd8)/(sqt2+sqt8),1,1,(sqd3/sqt3),(sqd3+sqd4)/(sqt3+sqt4), (sqd3+sqd5)/(sqt3+sqt5),
+            (sqd3+sqd6)/(sqt3+sqt6),(sqd3+sqd7)/(sqt3+sqt7),(sqd3+sqd8)/(sqt3+sqt8),1,1,1,
+            (sqd4/sqt4), (sqd4+sqd5)/(sqt4+sqt5),(sqd4+sqd6)/(sqt4+sqt6),(sqd4+sqd7)/(sqt4+sqt7),
+            (sqd4+sqd8)/(sqt4+sqt8),1,1,1,1,(sqd5/sqt5),(sqd5+sqd6)/(sqt5+sqt6),(sqd5+sqd7)/(sqt5+sqt7),
+            (sqd5+sqd8)/(sqt5+sqt8),1,1,1,1,1,(sqd6/sqt6),(sqd6+sqd7)/(sqt6+sqt7),(sqd6+sqd8)/(sqt6+sqt8),
+            1,1,1,1,1,1,(sqd7/sqt7),(sqd7+sqd8)/(sqt7+sqt8),1,1,1,1,1,1,1,(sqd8/sqt8))
+  raz2 <- 1 - raz2
+  mraz <- matrix(raz2, ncol = 8)
+  colnames(mraz) <- colnames(atq)[4:11]
+  rownames(mraz) <- colnames(atq)[4:11]
   return(mraz)
 }
 
