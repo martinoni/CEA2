@@ -1,5 +1,5 @@
 library("factoextra")
-jogo1ime <- read.delim("~/Development/IME/cea2/jogo1acao.txt", header=TRUE)
+jogo1ime <- read.delim("~/Development/IME/cea2/CEA2/jogo1acao.txt", header=TRUE)
 jogo1ime.active <- jogo1ime[, 7:50]
 res.pca <- prcomp(jogo1ime.active, scale = TRUE)
 
@@ -21,7 +21,6 @@ for(i in seq(8, ncol(jogo1ime)-1, by = 2)){
   print(sprintf('Jogadores %s e %s', 
                 toString(colnames(jogo1ime)[i]), 
                 toString(colnames(jogo1ime)[i+1])))
-  devAskNewPage(options("device.ask.default")[[1]])
   qplot(jogo1ime[, i], jogo1ime[, i+1],data=jogo1ime, geom='bin2d',
         xlim=c(0, 105), ylim=c(0, 68)) +
     scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
@@ -123,3 +122,61 @@ for(k in 1:n_clusts){
 }
 
 system('rm /home/thiago/Development/IME/cea2/CEA2/descritiva/mapas_de_calor_clusters/*')
+
+################## histograma de todos os jogadores ppor time ########
+
+for(n_jogo in 1:5){
+  jogo1ime <- read.delim(sprintf("~/Development/IME/cea2/CEA2/jogo%sacao.txt", n_jogo), header=TRUE)
+  
+  #Jogo A
+  jogo1A <- jogo1ime[, 8:29]
+  xs_A <- jogo1A[, seq(1, ncol(jogo1A), 2)] %>% 
+    as.matrix() %>% 
+    matrix(ncol = 1)
+  ys_A <- jogo1A[, seq(2, ncol(jogo1A), 2)] %>% 
+    as.matrix() %>% 
+    matrix(ncol = 1)
+  
+  qplot(xs_A, ys_A, geom='bin2d', main = sprintf(''),
+        xlim=c(0, 105), ylim=c(0, 68)) +
+    scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
+    xlab('X') +
+    ylab('Y')
+  
+  ggsave(sprintf('~/Development/IME/cea2/CEA2/descritiva/mapas_de_calor/separado_por_time/j%s_A.png', n_jogo),
+         width = 6.37, height = 4)
+  
+  
+  #Jogo B
+  jogo1B <- jogo1ime[, 30:51]
+  xs_B <- jogo1B[, seq(1, ncol(jogo1A), 2)] %>% 
+    as.matrix() %>% 
+    matrix(ncol = 1)
+  ys_B <- jogo1B[, seq(2, ncol(jogo1A), 2)] %>% 
+    as.matrix() %>% 
+    matrix(ncol = 1)
+  
+  qplot(xs_B, ys_B, geom='bin2d', main = sprintf(''),
+        xlim=c(0, 105), ylim=c(0, 68)) +
+    scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
+    xlab('X') +
+    ylab('Y')
+  
+  ggsave(sprintf('~/Development/IME/cea2/CEA2/descritiva/mapas_de_calor/separado_por_time/j%s_B.png', n_jogo),
+         width = 6.37, height = 4)
+  
+  
+  xs <- c(xs_A %>% as.vector(), xs_B %>% as.vector())
+  ys <- c(ys_A %>% as.vector(), ys_B %>% as.vector())
+  
+  qplot(xs, ys, geom='bin2d', main = sprintf(''),
+        xlim=c(0, 105), ylim=c(0, 68)) +
+    scale_fill_gradientn(colours=r, trans="log", name = 'Frequência') +
+    xlab('X') +
+    ylab('Y')
+  
+  ggsave(sprintf('~/Development/IME/cea2/CEA2/descritiva/mapas_de_calor/separado_por_time/j%s_todos.png', n_jogo),
+         width = 6.37, height = 4)
+  
+}
+  
