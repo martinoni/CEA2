@@ -139,10 +139,10 @@ l.1B <- data.frame(ataque = c(compar1.B$ataque,compar1.B$ataque),
 ggplot(l.1A,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 1 - Ataque Time A vs Defesa Time B") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 1 - Ataque Equipe A vs Defesa Equipe B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A1AvD1B.png', plot = last_plot())
@@ -150,10 +150,10 @@ ggsave('STG_A1AvD1B.png', plot = last_plot())
 ggplot(l.1B,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 1 - Ataque Time B vs Defesa Time A") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 1 - Ataque Equipe B vs Defesa Equipe A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A1BvD1A.png', plot = last_plot())
@@ -169,10 +169,10 @@ l.2B <- data.frame(ataque = c(compar2.B$ataque,compar2.B$ataque),
 ggplot(l.2A,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 2 - Ataque Time A vs Defesa Time B") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 2 - Ataque Equipe A vs Defesa Equipe B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A2AvD2B.png', plot = last_plot())
@@ -180,10 +180,10 @@ ggsave('STG_A2AvD2B.png', plot = last_plot())
 ggplot(l.2B,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 2 - Ataque Time B vs Defesa Time A") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 2 - Ataque Equipe B vs Defesa Equipe A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A2BvD2A.png', plot = last_plot())
@@ -199,10 +199,10 @@ l.3B <- data.frame(ataque = c(compar3.B$ataque,compar3.B$ataque),
 ggplot(l.3A,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 3 - Ataque Time A vs Defesa Time B") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 3 - Ataque Equipe A vs Defesa Equipe B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A3AvD3B.png', plot = last_plot())
@@ -210,10 +210,10 @@ ggsave('STG_A3AvD3B.png', plot = last_plot())
 ggplot(l.3B,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 3 - Ataque Time B vs Defesa Time A") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 3 - Ataque Equipe B vs Defesa Equipe A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A3BvD3A.png', plot = last_plot())
@@ -229,10 +229,10 @@ l.4B <- data.frame(ataque = c(compar4.B$ataque,compar4.B$ataque),
 ggplot(l.4A,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 4 - Ataque Time A vs Defesa Time B") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 4 - Ataque Equipe A vs Defesa Equipe B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A4AvD4B.png', plot = last_plot())
@@ -240,10 +240,10 @@ ggsave('STG_A4AvD4B.png', plot = last_plot())
 ggplot(l.4B,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 4 - Ataque Time B vs Defesa Time A") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 4 - Ataque Equipe B vs Defesa Equipe A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A4BvD4A.png', plot = last_plot())
@@ -259,10 +259,10 @@ l.5B <- data.frame(ataque = c(compar5.B$ataque,compar5.B$ataque),
 ggplot(l.5A,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 5 - Ataque Time A vs Defesa Time B") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 5 - Ataque Equipe A vs Defesa Equipe B") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A5AvD5B.png', plot = last_plot())
@@ -270,10 +270,10 @@ ggsave('STG_A5AvD5B.png', plot = last_plot())
 ggplot(l.5B,aes(x = ataque,y = as.numeric(grupo), color = time, shape = time)) +
   geom_line(linetype = "longdash") +
   geom_point() +
-  ggtitle("Jogo 5 - Ataque Time B vs Defesa Time A") +
-  labs(x = "Nº Ataque", y = "Grupo", color = "Time", shape = "Time") +
-  scale_color_manual(values= cor5) +
-  scale_shape_manual(values=c(19,17)) +
+  ggtitle("Jogo 5 - Ataque Equipe B vs Defesa Equipe A") +
+  labs(x = "Nº Ataque", y = "Grupo", color = "Equipe", shape = "Equipe") +
+  scale_color_manual(values= cor5,labels = c("Ataque", "Defesa")) +
+  scale_shape_manual(values=c(19,17),labels = c("Ataque", "Defesa")) +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5))
 ggsave('STG_A5BvD5A.png', plot = last_plot())
