@@ -31,7 +31,9 @@ cor5 <- c("red","blue3","darkgreen","darkorchid3","chocolate4")
 #ATQ
 corg <- cor.des(cl_atq1A)
 png('Desen.Grup_A1A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq1.A[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Ataque Equipe A", oma=c(3,3,5,11))
+pairs(atq1.A[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Ataque Equipe A", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq1.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -40,7 +42,9 @@ dev.off()
 
 corg <- cor.des(cl_atq1B)
 png('Desen.Grup_A1B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq1.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Ataque Equipe B", oma=c(3,3,5,11))
+pairs(atq1.B[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Ataque Equipe B", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq1.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -48,7 +52,9 @@ dev.off()
 
 corg <- cor.des(cl_atq2A)
 png('Desen.Grup_A2A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq2.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Ataque Equipe A", oma=c(3,3,5,11))
+pairs(atq2.A[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Ataque Equipe A", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq2.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -56,7 +62,9 @@ dev.off()
 
 corg <- cor.des(cl_atq2B)
 png('Desen.Grup_A2B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq2.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Ataque Equipe B", oma=c(3,3,5,11))
+pairs(atq2.B[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Ataque Equipe B", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq2.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -64,7 +72,9 @@ dev.off()
 
 corg <- cor.des(cl_atq3A)
 png('Desen.Grup_A3A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq3.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Ataque Equipe A", oma=c(3,3,5,11))
+pairs(atq3.A[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Ataque Equipe A", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq3.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -72,7 +82,9 @@ dev.off()
 
 corg <- cor.des(cl_atq3B)
 png('Desen.Grup_A3B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq3.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Ataque Equipe B", oma=c(3,3,5,11))
+pairs(atq3.B[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Ataque Equipe B", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq3.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -80,7 +92,9 @@ dev.off()
 
 corg <- cor.des(cl_atq4A)
 png('Desen.Grup_A4A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq4.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Ataque Equipe A", oma=c(3,3,5,11))
+pairs(atq4.A[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Ataque Equipe A", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq4.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -88,7 +102,9 @@ dev.off()
 
 corg <- cor.des(cl_atq4B)
 png('Desen.Grup_A4B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq4.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Ataque Equipe B", oma=c(3,3,5,11))
+pairs(atq4.B[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Ataque Equipe B", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq4.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -96,7 +112,9 @@ dev.off()
 
 corg <- cor.des(cl_atq5A)
 png('Desen.Grup_A5A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq5.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Ataque Equipe A", oma=c(3,3,5,11))
+pairs(atq5.A[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Ataque Equipe A", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq5.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -104,7 +122,9 @@ dev.off()
 
 corg <- cor.des(cl_atq5B)
 png('Desen.Grup_A5B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(atq5.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Ataque Equipe B", oma=c(3,3,5,11))
+pairs(atq5.B[,4:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Ataque Equipe B", oma=c(3,3,5,11),
+      labels = c("Ação/Min","Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(atq5.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -114,7 +134,9 @@ dev.off()
 #DEF
 corg <- cor.des(cl_def1A)
 png('Desen.Grup_D1A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def1.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Defesa Equipe A", oma=c(3,3,5,11))
+pairs(def1.A[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Defesa Equipe A", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def1.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -122,7 +144,9 @@ dev.off()
 
 corg <- cor.des(cl_def1B)
 png('Desen.Grup_D1B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def1.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Defesa Equipe B", oma=c(3,3,5,11))
+pairs(def1.B[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 1 - Defesa Equipe B", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def1.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -130,7 +154,9 @@ dev.off()
 
 corg <- cor.des(cl_def2A)
 png('Desen.Grup_D2A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def2.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Defesa Equipe A", oma=c(3,3,5,11))
+pairs(def2.A[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Defesa Equipe A", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def2.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -138,7 +164,9 @@ dev.off()
 
 corg <- cor.des(cl_def2B)
 png('Desen.Grup_D2B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def2.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Defesa Equipe B", oma=c(3,3,5,11))
+pairs(def2.B[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 2 - Defesa Equipe B", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def2.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -146,7 +174,9 @@ dev.off()
 
 corg <- cor.des(cl_def3A)
 png('Desen.Grup_D3A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def3.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Defesa Equipe A", oma=c(3,3,5,11))
+pairs(def3.A[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Defesa Equipe A", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def3.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -154,7 +184,9 @@ dev.off()
 
 corg <- cor.des(cl_def3B)
 png('Desen.Grup_D3B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def3.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Defesa Equipe B", oma=c(3,3,5,11))
+pairs(def3.B[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 3 - Defesa Equipe B", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def3.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -162,7 +194,9 @@ dev.off()
 
 corg <- cor.des(cl_def4A)
 png('Desen.Grup_D4A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def4.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Defesa Equipe A", oma=c(3,3,5,11))
+pairs(def4.A[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Defesa Equipe A", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def4.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -170,7 +204,9 @@ dev.off()
 
 corg <- cor.des(cl_def4B)
 png('Desen.Grup_D4B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def4.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Defesa Equipe B", oma=c(3,3,5,11))
+pairs(def4.B[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 4 - Defesa Equipe B", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def4.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -178,7 +214,9 @@ dev.off()
 
 corg <- cor.des(cl_def5A)
 png('Desen.Grup_D5A.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def5.A[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Defesa Equipe A", oma=c(3,3,5,11))
+pairs(def5.A[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Defesa Equipe A", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def5.A$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
@@ -186,7 +224,9 @@ dev.off()
 
 corg <- cor.des(cl_def5B)
 png('Desen.Grup_D5B.png', width=7*ppi, height=6*ppi, res=ppi)
-pairs(def5.B[,2:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Defesa Equipe B", oma=c(3,3,5,11))
+pairs(def5.B[,5:11], pch=16, col=corg, cex=0.6, main = "Jogo 5 - Defesa Equipe B", oma=c(3,3,5,11),
+      labels = c("Centroide X","Centroide Y","Bola X","Bola Y","Desloc. \nCentroide",
+                 "Desloc. \nBola","Área"))
 par(xpd = TRUE)
 legend("right",legend = c(levels(as.factor(def5.B$classif))),  
        fill=cor5,cex = 0.5, pt.cex = 0.2, title = "Grupos")
