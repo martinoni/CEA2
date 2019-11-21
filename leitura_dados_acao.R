@@ -1,6 +1,4 @@
 ##################################################JOGO 1#########################################
-library(sp)
-library(adehabitatHR)
 jogo1ime <- read.delim("jogo1acao.txt", header=TRUE)
 
 area.EA <- c()
