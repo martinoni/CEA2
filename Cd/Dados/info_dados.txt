@@ -1,0 +1,25 @@
+O arquivo matriz.dat, contém os dados o projeto “Detecção e monitoramento de escorregamentos em encostas naturais a partir da utilização integrada de imagens espectrais e modelos de elevação” (Pesquisador: Guilherme Pereira Bento Garcia).
+
+identificação de Grupo (Escorreg): 0 e 1
+valores do índice ARVI (ARVI)
+valores do índice AVI (AVI)
+valores do índice CIGreen (CIGreen)
+valores do índice CVI (CVI)
+valores do índice EVI (EVI)
+valores do índice IAF (IAF)
+valores do índice MSAVI (MSAVI)
+valores do índice MSI (MSI)
+valores do índice MVI5 (MVI5I)
+valores do índice MVI7 (MVI7)
+valores do índice NDVI (NDVI)
+valores do índice NPCI (ARVI)
+valores do índice PSRI (PSRI)
+valores do índice SAVI (SAVI)
+valores do índice SR (SR)
+valores do índice VLg (VLg)
+valores da Declividade (Declividade)
+valores do ASPECTO (Aspecto)
+valores da CURVATURA VERTICAL (CurvaturaV)
+valores da CURVATURA HORIZONTAL (CurvaturaH)
+
+REFERÊNCIA: Soler, Bortolucci e Martinoni (2019) - Relatório de Análise Estat´stica CEA 19P01
